@@ -326,10 +326,13 @@
       .hero-content { padding: 0 1.5rem; }
       .hero-h1 { font-size: 48px; }
       .hero-tagline { font-size: 15px; }
-      .ribbon { flex-direction: column; gap: 0.25rem; }
+      .ribbon { flex-direction: column; gap: 0.25rem; text-align: left; }
+      .ribbon-right { text-align: left; justify-content: flex-start; }
       .sec { padding: 3rem 1.25rem; }
       .sec-title { font-size: 32px; margin-bottom: 1.75rem; }
-      .week-grid { grid-template-columns: repeat(4, 1fr); }
+      .week-grid { grid-template-columns: repeat(3, 1fr); }
+      .week-grid > .day-card { grid-column: auto; }
+      .week-grid > .day-card:nth-child(7) { grid-column: 1 / -1; }
       .photo-strip { grid-template-columns: 1fr; }
       .photo-strip img { height: 200px; }
       .pricing-cards { grid-template-columns: 1fr; }
@@ -347,7 +350,6 @@
       .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
     }
     @media (max-width: 420px) {
-      .week-grid { grid-template-columns: repeat(3, 1fr); gap: 5px; }
       .hero-h1 { font-size: 40px; }
       .sec-title { font-size: 28px; }
       .c-stat-num { font-size: 52px; }
