@@ -170,13 +170,13 @@
     .hero-slides { width: 100%; height: 100%; position: relative; }
     .hero-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.2s ease-in-out; }
     .hero-slide.active { opacity: 1; }
-    .hero-img { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; display: block; }
+    .hero-img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .hero-slide:nth-child(1) .hero-img { object-position: center 45%; }
     .hero-slide:nth-child(2) .hero-img { object-position: center 30%; }
     .hero-overlay { position: absolute; inset: 0; background: linear-gradient(105deg, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.62) 40%, rgba(0,0,0,0.35) 70%, rgba(0,0,0,0.45) 100%); }
-    .hero-content { position: absolute; inset: 0; display: flex; align-items: center; padding: 0 calc(max(1.5rem, 50% - 600px)); }
-    .hero-text { max-width: 580px; position: relative; z-index: 2; }
-    .hero-eyebrow { font-size: 12px; letter-spacing: 3.5px; text-transform: uppercase; color: #e8197c; margin-bottom: 1.5rem; font-weight: 600; }
+    .hero-content { position: absolute; inset: 0; display: flex; align-items: center; padding: 0 calc(max(1.5rem, 50% - 600px)); z-index: 2; }
+    .hero-text { max-width: 580px; }
+    .hero-eyebrow { font-size: 12px; letter-spacing: 3.5px; text-transform: uppercase; color: #fff; margin-bottom: 1.5rem; font-weight: 600; padding-left: 10px; border-left: 3px solid #e8197c; }
     .hero-h1 { font-family: 'Playfair Display', serif; font-size: 78px; font-weight: 800; color: #fff; line-height: 1.02; margin-bottom: 1.5rem; letter-spacing: -0.02em; }
     .hero-h1 em { font-style: italic; font-weight: 700; color: #e8197c; }
     .hero-tagline { font-size: 17px; color: rgba(255,255,255,0.82); line-height: 1.6; margin-bottom: 2.25rem; max-width: 460px; font-weight: 400; }
@@ -265,7 +265,6 @@
     .loc-card { background: #fff; border: 1px solid #efefef; border-radius: 16px; overflow: hidden; box-shadow: 0 6px 24px rgba(0,0,0,0.08); }
     .loc-img { width: 100%; height: 220px; object-fit: cover; object-position: center; display: block; }
     .loc-body { padding: 1.6rem; }
-    .loc-tag { display: inline-block; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; background: #111; color: #e8197c; padding: 4px 12px; border-radius: 6px; margin-bottom: 0.85rem; }
     .loc-addr { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; color: #111; margin-bottom: 0.4rem; letter-spacing: -0.01em; }
     .loc-city { font-size: 14px; color: #999; margin-bottom: 0.5rem; }
     .loc-phone { font-size: 15px; color: #444; font-weight: 500; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; }
@@ -335,10 +334,13 @@
       .hero-content { padding: 0 1.5rem; }
       .hero-h1 { font-size: 48px; }
       .hero-tagline { font-size: 15px; }
-      .ribbon { flex-direction: column; gap: 0.25rem; }
+      .ribbon { flex-direction: column; gap: 0.75rem; text-align: left; }
+      .ribbon-right { text-align: left; justify-content: flex-start; align-self: flex-start; }
       .sec { padding: 3rem 1.25rem; }
       .sec-title { font-size: 32px; margin-bottom: 1.75rem; }
-      .week-grid { grid-template-columns: repeat(4, 1fr); }
+      .week-grid { grid-template-columns: repeat(3, 1fr); }
+      .week-grid > .day-card { grid-column: auto; }
+      .week-grid > .day-card:nth-child(7) { grid-column: 1 / -1; }
       .photo-strip { grid-template-columns: 1fr; }
       .photo-strip img { height: 200px; }
       .pricing-cards { grid-template-columns: 1fr; }
@@ -356,7 +358,6 @@
       .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
     }
     @media (max-width: 420px) {
-      .week-grid { grid-template-columns: repeat(3, 1fr); gap: 5px; }
       .hero-h1 { font-size: 40px; }
       .sec-title { font-size: 28px; }
       .c-stat-num { font-size: 52px; }
@@ -429,9 +430,9 @@
 
   <!-- HERO -->
   <div class="hero">
-    <div class="hero-slides" id="hero-slides">
+    <div class="hero-slides">
       <div class="hero-slide active">
-        <img class="hero-img" src="images/hero-1.jpg" alt="Nifty Thrifty Thrift Shop exterior, Carolina Beach Rd" fetchpriority="high">
+        <img class="hero-img" src="images/hero-1.jpg" alt="Nifty Thrifty Thrift Shop exterior" fetchpriority="high">
         <div class="hero-overlay"></div>
       </div>
       <div class="hero-slide">
@@ -450,7 +451,7 @@
         </div>
       </div>
     </div>
-    <div class="hero-dots" id="hero-dots">
+    <div class="hero-dots">
       <button class="hero-dot active" aria-label="Slide 1"></button>
       <button class="hero-dot" aria-label="Slide 2"></button>
     </div>
@@ -631,36 +632,52 @@
   ).join('');
   $('hero-tagline').textContent = SITE.heroBody;
 
+  // ── HERO SLIDESHOW ─────────────────────────────────────────
+  (function () {
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots   = document.querySelectorAll('.hero-dot');
+    if (slides.length < 2) return;
+    let current = 0;
+    let timer   = null;
+    const DELAY = 7000;
+
+    function goTo(n) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = (n + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+    }
+    function start() { timer = setInterval(() => goTo(current + 1), DELAY); }
+    function reset() { clearInterval(timer); start(); }
+
+    dots.forEach((dot, i) => dot.addEventListener('click', () => { goTo(i); reset(); }));
+
+    const hero = document.querySelector('.hero');
+    hero.addEventListener('mouseenter', () => clearInterval(timer));
+    hero.addEventListener('mouseleave', start);
+
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) start();
+  })();
+
   // ── RIBBON ─────────────────────────────────────────────────
-  // Computes the next open/close moment based on standard hours:
-  //   Mon–Fri 10am–5:30pm, Sat–Sun 10am–5pm
   function getHoursStatus() {
     const now = new Date();
-    const day = now.getDay(); // 0=Sun ... 6=Sat
+    const day = now.getDay();
     const minutes = now.getHours() * 60 + now.getMinutes();
     const isWeekend = day === 0 || day === 6;
-    const openMin  = 10 * 60;                  // 10:00
-    const closeMin = isWeekend ? 17 * 60 : 17 * 60 + 30; // 5:00 or 5:30
+    const openMin  = 10 * 60;
+    const closeMin = isWeekend ? 17 * 60 : 17 * 60 + 30;
     const fmt = (mins) => {
-      const h = Math.floor(mins / 60);
-      const m = mins % 60;
+      const h = Math.floor(mins / 60), m = mins % 60;
       const period = h >= 12 ? 'pm' : 'am';
       const hr = ((h + 11) % 12) + 1;
       return m === 0 ? `${hr}${period}` : `${hr}:${String(m).padStart(2,'0')}${period}`;
     };
-    if (minutes < openMin) {
-      return `Open today at ${fmt(openMin)}`;
-    }
-    if (minutes < closeMin) {
-      return `Open until ${fmt(closeMin)} today`;
-    }
-    // Closed for the day — next open is tomorrow
-    const tomorrowIsWeekend = ((day + 1) % 7) === 0 || ((day + 1) % 7) === 6;
-    const tomorrowOpen = 10 * 60;
-    const tomorrowLabel = ((day + 1) % 7) === 1 ? 'Monday' :
-                          ((day + 1) % 7) === 0 ? 'Sunday' :
-                          'tomorrow';
-    return `Opens ${fmt(tomorrowOpen)} ${tomorrowLabel}`;
+    if (minutes < openMin)  return `Open today at ${fmt(openMin)}`;
+    if (minutes < closeMin) return `Open until ${fmt(closeMin)} today`;
+    const tomorrowLabel = ((day + 1) % 7) === 1 ? 'Monday' : ((day + 1) % 7) === 0 ? 'Sunday' : 'tomorrow';
+    return `Opens ${fmt(10 * 60)} ${tomorrowLabel}`;
   }
 
   if (SITE.ribbon?.show) {
@@ -692,7 +709,6 @@
 
   // ── PRICING ────────────────────────────────────────────────
   function formatPrice(p) { return esc(p).replace(/(\$[\d.]+)/, '<em>$1</em>'); }
-
   $('pricing-cards').innerHTML = SITE.pricingCategories.map(cat => `
     <div class="price-card">
       <div class="price-card-head">
@@ -804,49 +820,6 @@
     mobileMenu.classList.remove('open');
   }
 
-  // ── HERO SLIDESHOW ─────────────────────────────────────────
-  (function () {
-    const slides = document.querySelectorAll('.hero-slide');
-    const dots   = document.querySelectorAll('.hero-dot');
-    if (slides.length < 2) return;
-
-    let current  = 0;
-    let timer    = null;
-    const DELAY  = 7000; // ms between auto-advances
-
-    function goTo(n) {
-      slides[current].classList.remove('active');
-      dots[current].classList.remove('active');
-      current = (n + slides.length) % slides.length;
-      slides[current].classList.add('active');
-      dots[current].classList.add('active');
-    }
-
-    function start() {
-      timer = setInterval(() => goTo(current + 1), DELAY);
-    }
-
-    function reset() {
-      clearInterval(timer);
-      start();
-    }
-
-    // Dot click — jump to slide and restart timer
-    dots.forEach((dot, i) => {
-      dot.addEventListener('click', () => { goTo(i); reset(); });
-    });
-
-    // Pause on hover, resume on leave
-    const hero = document.querySelector('.hero');
-    hero.addEventListener('mouseenter', () => clearInterval(timer));
-    hero.addEventListener('mouseleave', start);
-
-    // Respect reduced motion — skip auto-advance
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      start();
-    }
-  })();
-
   // ── SCROLL REVEAL ──────────────────────────────────────────
   function setupScrollReveal() {
     const revealTargets = [
@@ -866,7 +839,6 @@
       const el = document.querySelector(sel);
       if (el) el.classList.add('reveal-stagger');
     });
-
     const all = document.querySelectorAll('.reveal, .reveal-stagger');
     all.forEach(el => {
       if (el.getBoundingClientRect().top < window.innerHeight) {
@@ -874,7 +846,6 @@
         requestAnimationFrame(() => requestAnimationFrame(() => el.classList.remove('no-transition')));
       }
     });
-
     if (!('IntersectionObserver' in window)) {
       all.forEach(el => el.classList.add('revealed'));
       return;
