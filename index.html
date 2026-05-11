@@ -30,10 +30,10 @@
   <meta name="twitter:image" content="https://i.ibb.co/jZ306kpK/3e1f00232e970babcc1a327bf56867ca204af03f4bd2644f55ee724d7ea6b1a2.png">
   <meta name="twitter:image:alt" content="Nifty Thrifty Thrift Shop — Market St location, Wilmington NC">
 
-  <!-- Favicon (optional placeholder — replace with real favicon) -->
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="https://i.ibb.co/VWXtq64s/Nifty-Stamps.png">
 
-  <!-- Schema.org structured data — LocalBusiness for both locations -->
+  <!-- Schema.org structured data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -46,8 +46,8 @@
         "description": "Wilmington's favorite thrift bin store, benefiting the homeless community. Two locations with daily restocks and weekly deals.",
         "logo": "https://i.ibb.co/VWXtq64s/Nifty-Stamps.png",
         "sameAs": [
-          "https://facebook.com/",
-          "https://instagram.com/"
+          "https://www.facebook.com/Niftythriftyilm",
+          "https://www.instagram.com/niftythriftyilm"
         ]
       },
       {
@@ -74,13 +74,13 @@
         "openingHoursSpecification": [
           {
             "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
             "opens": "10:00",
             "closes": "17:30"
           },
           {
             "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Saturday", "Sunday"],
+            "dayOfWeek": ["Saturday","Sunday"],
             "opens": "10:00",
             "closes": "17:00"
           }
@@ -101,6 +101,7 @@
           "streetAddress": "3722 Carolina Beach Rd",
           "addressLocality": "Wilmington",
           "addressRegion": "NC",
+          "postalCode": "28412",
           "addressCountry": "US"
         },
         "geo": {
@@ -111,13 +112,13 @@
         "openingHoursSpecification": [
           {
             "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
             "opens": "10:00",
             "closes": "17:30"
           },
           {
             "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Saturday", "Sunday"],
+            "dayOfWeek": ["Saturday","Sunday"],
             "opens": "10:00",
             "closes": "17:00"
           }
@@ -225,7 +226,8 @@
     .price-day { font-size: 13px; color: #888; font-weight: 500; letter-spacing: 0.2px; }
     .price-amt { font-size: 18px; font-weight: 600; color: #111; }
     .price-amt em { color: #e8197c; font-style: normal; font-weight: 700; font-size: 22px; }
-    /* BOGO — featured dark section */
+
+    /* BOGO */
     .bogo-sec { background: #111; color: #fff; }
     .bogo-sec .sec-title { color: #fff; }
     .bogo-sec .sec-title em { color: #e8197c; }
@@ -296,7 +298,6 @@
     .footer { background: #0d0d0d; padding: 4rem calc(max(1.5rem, 50% - 600px)) 2rem; border-top: 3px solid #e8197c; }
     .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
     .footer-col h4 { font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: #e8197c; margin-bottom: 1.1rem; font-weight: 600; }
-    .footer-brand-wrap { }
     .footer-brand { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700; font-size: 26px; color: #e8197c; line-height: 1.1; margin-bottom: 0.5rem; letter-spacing: -0.01em; }
     .footer-brand-sub { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 14px; letter-spacing: 4px; text-transform: uppercase; color: #fff; margin-bottom: 1rem; }
     .footer-tagline { font-size: 13px; color: #888; line-height: 1.7; margin-bottom: 1.25rem; max-width: 280px; }
@@ -350,7 +351,7 @@
       .c-stat-num { font-size: 52px; }
     }
 
-    /* Scroll margin — prevents sticky nav from covering section headings on anchor jump */
+    /* Scroll margin */
     #deals, #pricing, #bogo, #events, #locations, #stamps, #community, #contact {
       scroll-margin-top: 80px;
     }
@@ -369,20 +370,19 @@
     .reveal-stagger.revealed > * { opacity: 1; transform: translateY(0); }
     .reveal.no-transition, .reveal-stagger.no-transition > * { transition: none !important; }
 
-    /* Respect reduced-motion preference */
+    /* Reduced motion */
     @media (prefers-reduced-motion: reduce) {
       .reveal, .reveal-stagger > * { opacity: 1 !important; transform: none !important; transition: none !important; }
-      .day-card.today::before { animation: none !important; }
     }
 
-    /* Today pill subtle pulse */
+    /* Today pill pulse */
     @keyframes todayPulse {
       0%, 100% { box-shadow: 0 2px 8px rgba(232,25,124,0.4); }
-      50%      { box-shadow: 0 2px 14px rgba(232,25,124,0.7); }
+      50%       { box-shadow: 0 2px 14px rgba(232,25,124,0.7); }
     }
     .today-pill { animation: todayPulse 2.4s ease-in-out infinite; }
 
-    /* Lucide icon defaults — all icons inherit color, sizing comes from class */
+    /* Lucide icons */
     .lucide { display: inline-block; vertical-align: middle; flex-shrink: 0; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
     .lucide-14 { width: 14px; height: 14px; }
     .lucide-16 { width: 16px; height: 16px; }
@@ -390,12 +390,9 @@
     .lucide-20 { width: 20px; height: 20px; }
     .lucide-26 { width: 26px; height: 26px; }
 
-    /* Eyebrow contrast tokens — different backgrounds need different pink stops */
-    /* #c4155e = 5.1:1 on white/light gray (WCAG AA ✓)                        */
-    /* #a00d47 = 6.2:1 on #fbeaf0 blush (WCAG AA ✓)                           */
-    /* #f06aab = 6.1:1 on #111 dark (WCAG AA ✓)                               */
-    .sec-label           { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #c4155e; margin-bottom: 0.85rem; font-weight: 600; }
-    .sec-alt  .sec-label { color: #c4155e; }
+    /* Eyebrow contrast tokens */
+    .sec-label            { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #c4155e; margin-bottom: 0.85rem; font-weight: 600; }
+    .sec-alt .sec-label   { color: #c4155e; }
     .community-sec .sec-label { color: #a00d47; }
     .stamps-sec .sec-label    { color: #f06aab; }
     .bogo-sec .sec-label      { color: #f06aab; }
@@ -407,29 +404,21 @@
   <!-- NAV -->
   <nav class="nav" id="top">
     <a class="nav-brand" href="#top" aria-label="Nifty Thrifty home">
-      <div class="nav-wordmark" id="nav-wordmark">
-        <!-- populated from data.js -->
-      </div>
+      <div class="nav-wordmark" id="nav-wordmark"></div>
     </a>
-    <div class="nav-links" id="nav-links">
-      <!-- populated from data.js -->
-    </div>
+    <div class="nav-links" id="nav-links"></div>
     <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
       <span></span><span></span><span></span>
     </button>
-    <div class="nav-mobile-menu" id="mobile-menu">
-      <!-- populated from data.js -->
-    </div>
+    <div class="nav-mobile-menu" id="mobile-menu"></div>
   </nav>
 
   <!-- ANNOUNCE -->
-  <div class="announce" id="announce-bar">
-    <!-- populated from data.js -->
-  </div>
+  <div class="announce" id="announce-bar"></div>
 
   <!-- HERO -->
   <div class="hero">
-    <img class="hero-img" src="images/hero.jpg" alt="Nifty Thrifty store interior">
+    <img class="hero-img" src="images/hero.jpg" alt="Nifty Thrifty store interior" fetchpriority="high">
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <div class="hero-text">
@@ -445,59 +434,45 @@
   </div>
 
   <!-- RIBBON -->
-  <div class="ribbon" id="ribbon">
-    <!-- populated from data.js -->
-  </div>
+  <div class="ribbon" id="ribbon"></div>
 
   <!-- WEEKLY DEALS -->
   <div class="sec" id="deals">
     <div class="sec-label">Every single week</div>
     <div class="sec-title">Your weekly deal lineup</div>
-    <div class="week-grid" id="week-grid">
-      <!-- populated from data.js -->
-    </div>
+    <div class="week-grid" id="week-grid"></div>
   </div>
 
   <!-- PHOTO + PRICING -->
   <div class="sec sec-alt" id="pricing">
     <div class="sec-label">Inside the store</div>
     <div class="sec-title">Something for everyone</div>
-    <div class="photo-strip" id="photo-strip">
-      <!-- populated from data.js -->
-    </div>
-    <div class="sec-label" style="margin-top: 4rem;">Bin pricing</div>
+    <div class="photo-strip" id="photo-strip"></div>
+    <div class="sec-label" style="margin-top:4rem;">Bin pricing</div>
     <div class="sec-title">Always clear. <em>Always fair.</em></div>
-    <div class="pricing-cards" id="pricing-cards">
-      <!-- populated from data.js -->
-    </div>
+    <div class="pricing-cards" id="pricing-cards"></div>
   </div>
 
-  <!-- BOGO — featured dark section -->
+  <!-- BOGO -->
   <div class="sec bogo-sec" id="bogo">
     <div class="sec-label">Buy one, get one free</div>
     <div class="sec-title">Buy one. <em>Get one free.</em></div>
     <p class="bogo-sub">Your favorite finds, doubled. Select categories, every day, both locations.</p>
-    <div class="bogo-grid" id="bogo-items">
-      <!-- populated from data.js -->
-    </div>
+    <div class="bogo-grid" id="bogo-items"></div>
   </div>
 
   <!-- EVENTS -->
   <div class="sec" id="events">
     <div class="sec-label">Coming up</div>
     <div class="sec-title">Special events</div>
-    <div class="events-grid" id="events-grid">
-      <!-- populated from data.js -->
-    </div>
+    <div class="events-grid" id="events-grid"></div>
   </div>
 
   <!-- LOCATIONS -->
   <div class="sec sec-alt" id="locations">
     <div class="sec-label">Find us</div>
     <div class="sec-title">Two Wilmington locations</div>
-    <div class="loc-grid" id="loc-grid">
-      <!-- populated from data.js -->
-    </div>
+    <div class="loc-grid" id="loc-grid"></div>
   </div>
 
   <!-- STAMPS -->
@@ -524,12 +499,8 @@
     <div class="sec-label">Our mission</div>
     <div class="sec-title">Benefiting the homeless community</div>
     <div class="comm-inner">
-      <div class="comm-text" id="comm-text">
-        <!-- populated from data.js -->
-      </div>
-      <div class="comm-stats" id="comm-stats">
-        <!-- populated from data.js -->
-      </div>
+      <div class="comm-text" id="comm-text"></div>
+      <div class="comm-stats" id="comm-stats"></div>
     </div>
   </div>
 
@@ -542,12 +513,8 @@
         <p class="footer-tagline" id="footer-tagline"></p>
         <div class="footer-social" id="footer-social"></div>
       </div>
-      <div class="footer-col" id="footer-loc-1">
-        <h4>Visit us</h4>
-      </div>
-      <div class="footer-col" id="footer-loc-2">
-        <h4>Visit us</h4>
-      </div>
+      <div class="footer-col" id="footer-loc-1"><h4>Visit us</h4></div>
+      <div class="footer-col" id="footer-loc-2"><h4>Visit us</h4></div>
       <div class="footer-col">
         <h4>Quick links</h4>
         <ul class="footer-links-list" id="footer-links"></ul>
@@ -561,87 +528,61 @@
 
 </div>
 
-<!-- Load content data -->
 <script src="data.js"></script>
-
 <script>
-  // ============================================================
-  //  Render content from SITE (defined in data.js)
-  // ============================================================
-
-  // Tiny helpers
   const $ = (id) => document.getElementById(id);
-  const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => (
-    { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
-  ));
+  const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c =>
+    ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c])
+  );
 
-  // ── LUCIDE ICON REGISTRY ───────────────────────────────────
-  // Inline SVG paths from lucide.dev (ISC license).
-  // Use icon('name', sizeClass) to render; size class is "lucide-14|16|18|20".
   const ICONS = {
-    'shopping-bag':  '<path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>',
-    'tag':           '<path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/>',
-    'star':          '<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>',
-    'sparkles':      '<path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/>',
-    'map-pin':       '<path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/>',
-    'home':          '<path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>',
-    'phone':         '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>',
-    'clock':         '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
-    'map':           '<path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/><path d="M15 5.764v15"/><path d="M9 3.236v15"/>',
-    'gift':          '<rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/>',
-    'heart':         '<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/>',
-    'facebook':      '<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>',
-    'instagram':     '<rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>',
-    'shirt':         '<path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/>',
-    'gem':           '<path d="M6 3h12l4 6-10 13L2 9Z"/><path d="M11 3 8 9l4 13 4-13-3-6"/><path d="M2 9h20"/>',
-    'footprints':    '<path d="M4 16v-2.38C4 11.5 2.97 10.43 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0Z"/><path d="M20 20v-2.38c0-2.12 1.03-3.19 1-5.62-.03-2.72-1.49-6-4.5-6C14.63 6 14 7.8 14 9.5c0 3.11 2 5.66 2 8.68V20a2 2 0 1 1-4 0Z"/>',
-    'disc':          '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/>',
+    'shopping-bag': '<path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>',
+    'tag':          '<path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/>',
+    'star':         '<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>',
+    'sparkles':     '<path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/>',
+    'map-pin':      '<path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/>',
+    'home':         '<path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>',
+    'phone':        '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>',
+    'clock':        '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
+    'map':          '<path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/><path d="M15 5.764v15"/><path d="M9 3.236v15"/>',
+    'gift':         '<rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/>',
+    'heart':        '<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/>',
+    'facebook':     '<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>',
+    'instagram':    '<rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>',
+    'shirt':        '<path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/>',
+    'gem':          '<path d="M6 3h12l4 6-10 13L2 9Z"/><path d="M11 3 8 9l4 13 4-13-3-6"/><path d="M2 9h20"/>',
+    'footprints':   '<path d="M4 16v-2.38C4 11.5 2.97 10.43 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0Z"/><path d="M20 20v-2.38c0-2.12 1.03-3.19 1-5.62-.03-2.72-1.49-6-4.5-6C14.63 6 14 7.8 14 9.5c0 3.11 2 5.66 2 8.68V20a2 2 0 1 1-4 0Z"/>',
+    'disc':         '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/>',
   };
 
   function icon(name, size = 'lucide-16') {
-    const path = ICONS[name];
-    if (!path) return '';
-    return `<svg class="lucide ${size}" viewBox="0 0 24 24" aria-hidden="true">${path}</svg>`;
+    const p = ICONS[name];
+    if (!p) return '';
+    return `<svg class="lucide ${size}" viewBox="0 0 24 24" aria-hidden="true">${p}</svg>`;
   }
 
   // ── NAV ────────────────────────────────────────────────────
-  $('nav-wordmark').innerHTML =
-    `${esc(SITE.name.replace(/ Thrift Shop$/i, ''))}<span>Thrift Shop · Wilmington, NC</span>`;
-
-  const navLinksHtml = SITE.footerLinks.map(l =>
-    `<a href="${esc(l.anchor)}">${esc(l.label)}</a>`
-  ).join('');
-  $('nav-links').innerHTML = navLinksHtml + `<a href="#stamps">How it works</a>`;
-
-  $('mobile-menu').innerHTML = SITE.footerLinks.map(l =>
-    `<a href="${esc(l.anchor)}" onclick="closeMobile()">${esc(l.label)}</a>`
-  ).join('') + `<a href="#stamps" onclick="closeMobile()">How it works</a>`;
+  $('nav-wordmark').innerHTML = `${esc(SITE.name.replace(/ Thrift Shop$/i,''))}<span>Thrift Shop · Wilmington, NC</span>`;
+  $('nav-links').innerHTML = SITE.footerLinks.map(l => `<a href="${esc(l.anchor)}">${esc(l.label)}</a>`).join('') + `<a href="#stamps">How it works</a>`;
+  $('mobile-menu').innerHTML = SITE.footerLinks.map(l => `<a href="${esc(l.anchor)}" onclick="closeMobile()">${esc(l.label)}</a>`).join('') + `<a href="#stamps" onclick="closeMobile()">How it works</a>`;
 
   // ── ANNOUNCEMENT BAR ───────────────────────────────────────
-  // Day-aware: shows messages tagged with today's day-of-week,
-  // falling back to any-day messages. If multiple match today,
-  // they rotate every 6s.
   const announcements = [
-    { days: [1], html: `${icon('sparkles', 'lucide-14')} <strong>Mega Monday</strong> &nbsp;·&nbsp; Brand new restock on the floor right now, first come, first pick` },
-    { days: [4], html: `${icon('star', 'lucide-14')} <strong>Double Stamp Thursday</strong> &nbsp;·&nbsp; Earn 2 stamps per $10 spent, today only, both locations` },
-    { days: [6], html: `${icon('tag', 'lucide-14')} <strong>$1/lb Weekend</strong> &nbsp;·&nbsp; Clothing &amp; linens just $1 per pound, all day today &amp; tomorrow` },
-    { days: [0], html: `${icon('shopping-bag', 'lucide-14')} <strong>Fill-A-Bag Sunday</strong> &nbsp;·&nbsp; 3–5pm at Market St, stuff any bag for just $10 &nbsp;·&nbsp; $1/lb all day too` },
-    { days: [],  html: SITE.announcement || `${icon('map-pin', 'lucide-14')} <strong>Two Wilmington locations</strong> &nbsp;·&nbsp; Market St &amp; Carolina Beach Rd &nbsp;·&nbsp; Double stamps every Thursday` },
+    { days: [1], html: `${icon('sparkles','lucide-14')} <strong>Mega Monday</strong> &nbsp;·&nbsp; Brand new restock on the floor right now, first come, first pick` },
+    { days: [4], html: `${icon('star','lucide-14')} <strong>Double Stamp Thursday</strong> &nbsp;·&nbsp; Earn 2 stamps per $10 spent, today only, both locations` },
+    { days: [6], html: `${icon('tag','lucide-14')} <strong>$1/lb Weekend</strong> &nbsp;·&nbsp; Clothing &amp; linens just $1 per pound, all day today &amp; tomorrow` },
+    { days: [0], html: `${icon('shopping-bag','lucide-14')} <strong>Fill-A-Bag Sunday</strong> &nbsp;·&nbsp; 3–5pm at Market St, stuff any bag for just $10 &nbsp;·&nbsp; $1/lb all day too` },
+    { days: [],  html: SITE.announcement || `${icon('map-pin','lucide-14')} <strong>Two Wilmington locations</strong> &nbsp;·&nbsp; Market St &amp; Carolina Beach Rd &nbsp;·&nbsp; Double stamps every Thursday` },
   ];
 
   const today = new Date().getDay();
-  const todayMessages = announcements.filter(a =>
-    a.days.includes(today) || a.days.length === 0
-  );
+  const todayMessages = announcements.filter(a => a.days.includes(today) || a.days.length === 0);
   const bar = $('announce-bar');
 
-  function paintAnnouncement(html) {
-    bar.innerHTML = `<p>${html}</p>`;
-  }
+  function paintAnnouncement(html) { bar.innerHTML = `<p>${html}</p>`; }
 
   if (todayMessages.length > 0) {
     paintAnnouncement(todayMessages[0].html);
-
     if (todayMessages.length > 1) {
       let idx = 0;
       setInterval(() => {
@@ -651,13 +592,9 @@
         p.style.opacity = '0';
         setTimeout(() => {
           paintAnnouncement(todayMessages[idx].html);
-          // Force reflow so the new <p> picks up the transition
           requestAnimationFrame(() => {
-            const newP = bar.querySelector('p');
-            if (newP) {
-              newP.style.opacity = '0';
-              requestAnimationFrame(() => { newP.style.opacity = '1'; });
-            }
+            const np = bar.querySelector('p');
+            if (np) { np.style.opacity = '0'; requestAnimationFrame(() => { np.style.opacity = '1'; }); }
           });
         }, 400);
       }, 6000);
@@ -666,44 +603,32 @@
 
   // ── HERO ───────────────────────────────────────────────────
   $('hero-eyebrow').textContent = SITE.heroEyebrow;
-  $('hero-h1').innerHTML = SITE.heroHeadline
-    .map((line, i) => i === SITE.heroHeadline.length - 1
-      ? `<em>${esc(line)}</em>`
-      : `${esc(line)}<br>`)
-    .join('');
+  $('hero-h1').innerHTML = SITE.heroHeadline.map((l, i) =>
+    i === SITE.heroHeadline.length - 1 ? `<em>${esc(l)}</em>` : `${esc(l)}<br>`
+  ).join('');
   $('hero-tagline').textContent = SITE.heroBody;
 
   // ── RIBBON ─────────────────────────────────────────────────
-  if (SITE.ribbon && SITE.ribbon.show) {
+  if (SITE.ribbon?.show) {
     $('ribbon').innerHTML = `
-      <div class="ribbon-left">
-        <strong>${esc(SITE.ribbon.headline)}</strong>
-        <span>${esc(SITE.ribbon.detail)}</span>
-      </div>
-      <div class="ribbon-right">${esc(SITE.ribbon.address)}</div>
-    `;
+      <div class="ribbon-left"><strong>${esc(SITE.ribbon.headline)}</strong><span>${esc(SITE.ribbon.detail)}</span></div>
+      <div class="ribbon-right">${esc(SITE.ribbon.address)}</div>`;
   } else {
     $('ribbon').style.display = 'none';
   }
 
   // ── WEEKLY SCHEDULE ────────────────────────────────────────
-  // Map day labels to JS day-of-week index for "today" highlight
-  const dayIndex = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
-
+  const dayIndex = { Sun:0, Mon:1, Tue:2, Wed:3, Thu:4, Fri:5, Sat:6 };
   $('week-grid').innerHTML = SITE.weeklySchedule.map(d => {
     const isToday = dayIndex[d.day] === today;
-    const classes = ['day-card'];
-    if (d.hot) classes.push('hot');
-    if (isToday) classes.push('today');
-    return `
-      <div class="${classes.join(' ')}"${isToday ? ' aria-current="date"' : ''}>
-        ${isToday ? '<span class="today-pill">Today</span>' : ''}
-        <div class="day-name">${esc(d.day)}</div>
-        <div class="day-promo">${esc(d.promo)}</div>
-        <div class="day-desc">${esc(d.desc)}</div>
-        <div class="day-dot"></div>
-      </div>
-    `;
+    const cls = ['day-card', d.hot && 'hot', isToday && 'today'].filter(Boolean).join(' ');
+    return `<div class="${cls}"${isToday ? ' aria-current="date"' : ''}>
+      ${isToday ? '<span class="today-pill">Today</span>' : ''}
+      <div class="day-name">${esc(d.day)}</div>
+      <div class="day-promo">${esc(d.promo)}</div>
+      <div class="day-desc">${esc(d.desc)}</div>
+      <div class="day-dot"></div>
+    </div>`;
   }).join('');
 
   // ── PHOTO STRIP ────────────────────────────────────────────
@@ -712,99 +637,54 @@
   ).join('');
 
   // ── PRICING ────────────────────────────────────────────────
+  function formatPrice(p) { return esc(p).replace(/(\$[\d.]+)/, '<em>$1</em>'); }
+
   $('pricing-cards').innerHTML = SITE.pricingCategories.map(cat => `
     <div class="price-card">
       <div class="price-card-head">
-        <div class="price-card-head-icon">${icon(cat.icon, 'lucide-16')}</div>
+        <div class="price-card-head-icon">${icon(cat.icon,'lucide-16')}</div>
         <div class="price-card-title">${esc(cat.title)}</div>
       </div>
       <div class="price-rows">
-        ${cat.rows.map(r => `
-          <div class="price-row">
-            <span class="price-day">${esc(r.days)}</span>
-            <span class="price-amt">${formatPrice(r.price)}</span>
-          </div>
-        `).join('')}
+        ${cat.rows.map(r => `<div class="price-row"><span class="price-day">${esc(r.days)}</span><span class="price-amt">${formatPrice(r.price)}</span></div>`).join('')}
       </div>
-    </div>
-  `).join('');
+    </div>`).join('');
 
-  // Wraps the dollar amount in <em> so it gets pink styling
-  function formatPrice(price) {
-    // e.g. "$2.00 / lb" → "<em>$2.00</em> / lb"
-    return esc(price).replace(/(\$[\d.]+)/, '<em>$1</em>');
-  }
-
+  // ── BOGO ───────────────────────────────────────────────────
   $('bogo-items').innerHTML = SITE.bogoItems.map(item => `
     <div class="bogo-card">
       <span class="bogo-badge">BOGO</span>
-      <div class="bogo-icon-wrap">${icon(item.icon, 'lucide-20')}</div>
+      <div class="bogo-icon-wrap">${icon(item.icon,'lucide-26')}</div>
       <div class="bogo-label">${esc(item.label)}</div>
-    </div>
-  `).join('');
-
-  // Bump BOGO icon size — they need to fill a larger circle
-  document.querySelectorAll('.bogo-icon-wrap .lucide').forEach(el => {
-    el.classList.remove('lucide-20');
-    el.classList.add('lucide-26');
-  });
+    </div>`).join('');
 
   // ── EVENTS ─────────────────────────────────────────────────
-  // Events with an endDate are automatically hidden once that date
-  // has passed. Events without endDate are shown permanently.
-  // endDate format: "YYYY-MM-DD" — the event hides the day after.
-  //
-  // Example one-time event in data.js:
-  //   {
-  //     endDate: "2026-12-31",
-  //     date: "Sat Dec 27 · 10am – 5pm",
-  //     name: "Holiday Sale",
-  //     location: "Both locations",
-  //     pills: ["50% off everything", "One day only"]
-  //   }
-  const today_date = new Date();
-  today_date.setHours(0, 0, 0, 0); // compare dates only, not times
-
+  const today_date = new Date(); today_date.setHours(0,0,0,0);
   const activeEvents = SITE.events.filter(e => {
-    if (!e.endDate) return true; // no expiry — always show
-    const end = new Date(e.endDate);
-    end.setHours(0, 0, 0, 0);
-    return end >= today_date; // hide once end date has passed
+    if (!e.endDate) return true;
+    const end = new Date(e.endDate); end.setHours(0,0,0,0);
+    return end >= today_date;
   });
-
   $('events-grid').innerHTML = activeEvents.length
     ? activeEvents.map(e => `
-        <div class="event-card">
-          <div class="event-card-body">
-            <span class="event-date-tag">${esc(e.date)}</span>
-            <div class="event-name">${esc(e.name)}</div>
-            <div class="event-loc">${esc(e.location)}</div>
-            <div class="pill-row">
-              ${e.pills.map(p => `<span class="pill">${esc(p)}</span>`).join('')}
-            </div>
-          </div>
-        </div>
-      `).join('')
+      <div class="event-card"><div class="event-card-body">
+        <span class="event-date-tag">${esc(e.date)}</span>
+        <div class="event-name">${esc(e.name)}</div>
+        <div class="event-loc">${esc(e.location)}</div>
+        <div class="pill-row">${e.pills.map(p => `<span class="pill">${esc(p)}</span>`).join('')}</div>
+      </div></div>`).join('')
     : `<p style="color:#999;font-size:15px;">Check back soon for upcoming events.</p>`;
 
   // ── LOCATIONS ──────────────────────────────────────────────
-  // Known coordinates for embedded maps. If a location's address
-  // isn't in this lookup, the map falls back to address-based search.
   const knownCoords = {
-    '1614 Market St':           { lat: 34.23651170077449,  lng: -77.92788965493592 },
-    '3722 Carolina Beach Rd':   { lat: 34.177476720072754, lng: -77.92682794597982 },
+    '1614 Market St':         { lat: 34.23651170077449,  lng: -77.92788965493592 },
+    '3722 Carolina Beach Rd': { lat: 34.177476720072754, lng: -77.92682794597982 },
   };
-
   function buildMapEmbed(loc) {
-    const coords = knownCoords[loc.address];
-    if (coords) {
-      return `https://maps.google.com/maps?q=${coords.lat},${coords.lng}&z=17&output=embed`;
-    }
-    // Fallback: address-based search
-    const q = encodeURIComponent(`${loc.address}, ${loc.city}`);
-    return `https://maps.google.com/maps?q=${q}&z=15&output=embed`;
+    const c = knownCoords[loc.address];
+    if (c) return `https://maps.google.com/maps?q=${c.lat},${c.lng}&z=17&output=embed`;
+    return `https://maps.google.com/maps?q=${encodeURIComponent(loc.address+', '+loc.city)}&z=15&output=embed`;
   }
-
   $('loc-grid').innerHTML = SITE.locations.map(loc => `
     <div class="loc-card">
       <img class="loc-img" src="${esc(loc.image)}" alt="${esc(loc.imageAlt)}" loading="lazy">
@@ -812,74 +692,52 @@
         <span class="loc-tag">${esc(loc.tag)}</span>
         <div class="loc-addr">${esc(loc.address)}</div>
         <div class="loc-city">${esc(loc.city)}</div>
-        <div class="loc-phone">${icon('phone', 'lucide-16')}<a href="tel:${esc(loc.phone.replace(/\D/g, ''))}">${esc(loc.phone)}</a></div>
-        <div class="loc-hours">
-          ${icon('clock', 'lucide-14')}
-          <div class="loc-hours-list">${loc.hours.map(esc).join('<br>')}</div>
-        </div>
-        <div class="loc-map-wrap">
-          <iframe class="loc-map-iframe" src="${esc(buildMapEmbed(loc))}" title="Map of ${esc(loc.address)}" loading="lazy"></iframe>
-        </div>
-        <a class="loc-map" href="${esc(loc.mapsUrl)}" target="_blank" rel="noopener">${icon('map', 'lucide-14')}Get directions</a>
+        <div class="loc-phone">${icon('phone','lucide-16')}<a href="tel:${esc(loc.phone.replace(/\D/g,''))}">${esc(loc.phone)}</a></div>
+        <div class="loc-hours">${icon('clock','lucide-14')}<div class="loc-hours-list">${loc.hours.map(esc).join('<br>')}</div></div>
+        <div class="loc-map-wrap"><iframe class="loc-map-iframe" src="${esc(buildMapEmbed(loc))}" title="Map of ${esc(loc.address)}" loading="lazy"></iframe></div>
+        <a class="loc-map" href="${esc(loc.mapsUrl)}" target="_blank" rel="noopener">${icon('map','lucide-14')}Get directions</a>
       </div>
-    </div>
-  `).join('');
+    </div>`).join('');
 
   // ── STAMPS ─────────────────────────────────────────────────
   $('stamps-body').textContent = SITE.stamps.body;
-  $('stamp-reward-icon').innerHTML = icon('gift', 'lucide-20');
+  $('stamp-reward-icon').innerHTML = icon('gift','lucide-20');
   $('stamp-reward-big').textContent = SITE.stamps.rewardAmount;
   $('stamp-reward-label').textContent = SITE.stamps.rewardDetail;
   $('stamp-img').src = SITE.stamps.cardImage;
 
   // ── COMMUNITY ──────────────────────────────────────────────
-  $('comm-text').innerHTML = SITE.community.body
-    .map(p => `<p>${esc(p)}</p>`)
-    .join('');
-
+  $('comm-text').innerHTML = SITE.community.body.map(p => `<p>${esc(p)}</p>`).join('');
   $('comm-stats').innerHTML = SITE.community.stats.map(s => `
     <div class="c-stat">
       <div class="c-stat-num">${esc(s.num)}</div>
       <div class="c-stat-label">${esc(s.label)}</div>
-    </div>
-  `).join('');
+    </div>`).join('');
 
   // ── FOOTER ─────────────────────────────────────────────────
-  $('footer-brand').textContent = "Nifty Thrifty";
+  $('footer-brand').textContent = 'Nifty Thrifty';
   $('footer-tagline').textContent = SITE.tagline.split('·')[0].trim() + ", Wilmington's favorite thrift bin store. Two locations, daily restocks, and finds you won't believe.";
-
-  // Location columns
   SITE.locations.forEach((loc, i) => {
-    const col = $(`footer-loc-${i + 1}`);
+    const col = $(`footer-loc-${i+1}`);
     if (!col) return;
     col.innerHTML += `
       <div class="footer-loc-name">${esc(loc.address)}</div>
       <div class="footer-loc-detail">
         ${esc(loc.city)}<br>
-        <a href="tel:${esc(loc.phone.replace(/\D/g, ''))}">${esc(loc.phone)}</a><br>
-        Mon–Fri 10am – 5:30pm<br>
-        Sat &amp; Sun 10am – 5pm<br>
+        <a href="tel:${esc(loc.phone.replace(/\D/g,''))}">${esc(loc.phone)}</a><br>
+        Mon–Fri 10am – 5:30pm<br>Sat &amp; Sun 10am – 5pm<br>
         <a href="${esc(loc.mapsUrl)}" target="_blank" rel="noopener">Get directions</a>
-      </div>
-    `;
+      </div>`;
   });
-
-  // Quick links
   $('footer-links').innerHTML = SITE.footerLinks.map(l =>
     `<li><a href="${esc(l.anchor)}">${esc(l.label)}</a></li>`
   ).join('') + `<li><a href="#stamps">Loyalty rewards</a></li>`;
-
-  // Social icons
   $('footer-social').innerHTML = `
-    <a class="soc-btn" href="${esc(SITE.social.facebook)}" target="_blank" rel="noopener" aria-label="Facebook">${icon('facebook', 'lucide-16')}</a>
-    <a class="soc-btn" href="${esc(SITE.social.instagram)}" target="_blank" rel="noopener" aria-label="Instagram">${icon('instagram', 'lucide-16')}</a>
-  `;
-
-  // Bottom row
-  const year = new Date().getFullYear();
-  const addrs = SITE.locations.map(l => l.address).join(' & ');
-  $('footer-copy').textContent = `© ${year} ${SITE.name} · ${addrs} · Wilmington, NC`;
-  $('footer-mission-tag').innerHTML = `${icon('heart', 'lucide-14')} Benefiting the homeless community`;
+    <a class="soc-btn" href="${esc(SITE.social.facebook)}" target="_blank" rel="noopener" aria-label="Facebook">${icon('facebook','lucide-16')}</a>
+    <a class="soc-btn" href="${esc(SITE.social.instagram)}" target="_blank" rel="noopener" aria-label="Instagram">${icon('instagram','lucide-16')}</a>`;
+  const yr = new Date().getFullYear();
+  $('footer-copy').textContent = `© ${yr} ${SITE.name} · ${SITE.locations.map(l=>l.address).join(' & ')} · Wilmington, NC`;
+  $('footer-mission-tag').innerHTML = `${icon('heart','lucide-14')} Benefiting the homeless community`;
 
   // ── HAMBURGER ──────────────────────────────────────────────
   const hamburger = $('hamburger');
@@ -892,6 +750,48 @@
     hamburger.classList.remove('open');
     mobileMenu.classList.remove('open');
   }
+
+  // ── SCROLL REVEAL ──────────────────────────────────────────
+  function setupScrollReveal() {
+    const revealTargets = [
+      '#deals .sec-label', '#deals .sec-title',
+      '#pricing .sec-label', '#pricing .sec-title',
+      '#pricing .photo-strip', '#pricing .pricing-cards',
+      '#bogo .sec-label', '#bogo .sec-title', '#bogo .bogo-sub',
+      '#events .sec-label', '#events .sec-title',
+      '#locations .sec-label', '#locations .sec-title',
+      '#stamps .sec-label', '#stamps .sec-title', '#stamps .stamps-inner',
+      '#community .sec-label', '#community .sec-title', '#community .comm-inner',
+    ];
+    revealTargets.forEach(sel =>
+      document.querySelectorAll(sel).forEach(el => el.classList.add('reveal'))
+    );
+    ['#week-grid', '#bogo-items', '#events-grid', '#loc-grid'].forEach(sel => {
+      const el = document.querySelector(sel);
+      if (el) el.classList.add('reveal-stagger');
+    });
+
+    const all = document.querySelectorAll('.reveal, .reveal-stagger');
+    all.forEach(el => {
+      if (el.getBoundingClientRect().top < window.innerHeight) {
+        el.classList.add('no-transition', 'revealed');
+        requestAnimationFrame(() => requestAnimationFrame(() => el.classList.remove('no-transition')));
+      }
+    });
+
+    if (!('IntersectionObserver' in window)) {
+      all.forEach(el => el.classList.add('revealed'));
+      return;
+    }
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('revealed'); obs.unobserve(entry.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.01 });
+    all.forEach(el => { if (!el.classList.contains('revealed')) obs.observe(el); });
+  }
+
+  requestAnimationFrame(() => setupScrollReveal());
 </script>
 </body>
 </html>
