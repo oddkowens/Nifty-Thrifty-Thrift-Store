@@ -113,7 +113,6 @@ const SITE = {
   // ----------------------------------------------------------
   locations: [
     {
-      tag: "Market St location",
       image: "https://i.ibb.co/jZ306kpK/3e1f00232e970babcc1a327bf56867ca204af03f4bd2644f55ee724d7ea6b1a2.png",
       imageAlt: "Market St location",
       address: "1614 Market St",
@@ -123,7 +122,6 @@ const SITE = {
       mapsUrl: "https://maps.google.com/?q=1614+Market+St,+Wilmington,+NC+28401"
     },
     {
-      tag: "Carolina Beach Rd location",
       image: "https://i.ibb.co/V0WtB9qm/a07a520df73334c65e8dd6bf5f970a517ed2c8b23856ecd27e654786a6ad8df9.png",
       imageAlt: "Carolina Beach Rd location",
       address: "3722 Carolina Beach Rd",
