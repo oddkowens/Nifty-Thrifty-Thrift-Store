@@ -188,7 +188,8 @@
     .ribbon-left { color: #fff; }
     .ribbon-left strong { font-size: 16px; font-weight: 500; display: block; }
     .ribbon-left span { font-size: 13px; opacity: 0.85; }
-    .ribbon-right { font-size: 13px; color: rgba(255,255,255,0.8); text-align: right; }
+    .ribbon-right { font-size: 13px; color: #fff; text-align: right; display: inline-flex; align-items: center; gap: 6px; font-weight: 500; }
+    .ribbon-right .lucide { color: rgba(255,255,255,0.85); }
 
     /* SECTIONS */
     .sec { padding: 7rem calc(max(1.5rem, 50% - 600px)); }
@@ -610,10 +611,41 @@
   $('hero-tagline').textContent = SITE.heroBody;
 
   // ── RIBBON ─────────────────────────────────────────────────
+  // Computes the next open/close moment based on standard hours:
+  //   Mon–Fri 10am–5:30pm, Sat–Sun 10am–5pm
+  function getHoursStatus() {
+    const now = new Date();
+    const day = now.getDay(); // 0=Sun ... 6=Sat
+    const minutes = now.getHours() * 60 + now.getMinutes();
+    const isWeekend = day === 0 || day === 6;
+    const openMin  = 10 * 60;                  // 10:00
+    const closeMin = isWeekend ? 17 * 60 : 17 * 60 + 30; // 5:00 or 5:30
+    const fmt = (mins) => {
+      const h = Math.floor(mins / 60);
+      const m = mins % 60;
+      const period = h >= 12 ? 'pm' : 'am';
+      const hr = ((h + 11) % 12) + 1;
+      return m === 0 ? `${hr}${period}` : `${hr}:${String(m).padStart(2,'0')}${period}`;
+    };
+    if (minutes < openMin) {
+      return `Open today at ${fmt(openMin)}`;
+    }
+    if (minutes < closeMin) {
+      return `Open until ${fmt(closeMin)} today`;
+    }
+    // Closed for the day — next open is tomorrow
+    const tomorrowIsWeekend = ((day + 1) % 7) === 0 || ((day + 1) % 7) === 6;
+    const tomorrowOpen = 10 * 60;
+    const tomorrowLabel = ((day + 1) % 7) === 1 ? 'Monday' :
+                          ((day + 1) % 7) === 0 ? 'Sunday' :
+                          'tomorrow';
+    return `Opens ${fmt(tomorrowOpen)} ${tomorrowLabel}`;
+  }
+
   if (SITE.ribbon?.show) {
     $('ribbon').innerHTML = `
       <div class="ribbon-left"><strong>${esc(SITE.ribbon.headline)}</strong><span>${esc(SITE.ribbon.detail)}</span></div>
-      <div class="ribbon-right">${esc(SITE.ribbon.address)}</div>`;
+      <div class="ribbon-right">${icon('clock','lucide-14')} <span>${esc(getHoursStatus())}</span></div>`;
   } else {
     $('ribbon').style.display = 'none';
   }
