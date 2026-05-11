@@ -1,5 +1,5 @@
 // ============================================================
-//  NIFTY THRIFTY — Site Content
+//  NIFTY THRIFTY — Site Content v14
 //  Edit this file to update text, prices, hours, events, etc.
 //  No need to touch index.html for routine content changes.
 // ============================================================
@@ -113,8 +113,8 @@ const SITE = {
   // ----------------------------------------------------------
   locations: [
     {
-      image: "https://i.ibb.co/jZ306kpK/3e1f00232e970babcc1a327bf56867ca204af03f4bd2644f55ee724d7ea6b1a2.png",
-      imageAlt: "Market St location",
+      image: "images/location-market.jpg",
+      imageAlt: "Nifty Thrifty Market St location, Wilmington NC",
       address: "1614 Market St",
       city: "Wilmington, NC 28401",
       phone: "910.617.5031",
@@ -122,8 +122,8 @@ const SITE = {
       mapsUrl: "https://maps.google.com/?q=1614+Market+St,+Wilmington,+NC+28401"
     },
     {
-      image: "https://i.ibb.co/V0WtB9qm/a07a520df73334c65e8dd6bf5f970a517ed2c8b23856ecd27e654786a6ad8df9.png",
-      imageAlt: "Carolina Beach Rd location",
+      image: "images/location-cbr.jpg",
+      imageAlt: "Nifty Thrifty Carolina Beach Rd location, Wilmington NC",
       address: "3722 Carolina Beach Rd",
       city: "Wilmington, NC 28412",
       phone: "910.769.5082",
@@ -178,8 +178,8 @@ const SITE = {
   // PHOTO STRIP (inside-the-store section)
   // ----------------------------------------------------------
   photoStrip: [
-    { src: "https://i.ibb.co/3ydNpFQ4/nifty-shoes.jpg",         alt: "Shoes and accessories wall" },
-    { src: "https://i.ibb.co/YTX5mZmc/Interior-with-bins.jpg",  alt: "Store interior with bins"   },
+    { src: "images/strip-1.jpg", alt: "Inside Nifty Thrifty — colorful clothing racks" },
+    { src: "images/strip-2.jpg", alt: "Clothing rack and shoe wall at Nifty Thrifty" },
   ],
 
 };
