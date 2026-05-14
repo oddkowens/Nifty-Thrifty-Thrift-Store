@@ -1,840 +1,203 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nifty Thrifty Thrift Shop · Wilmington, NC</title>
-  <meta name="description" content="Wilmington's favorite thrift bin store. Two locations packed with daily restocks, weekly deals, and finds you won't believe. Benefiting the homeless community.">
+// ============================================================
+//  NIFTY THRIFTY — Site Content v15
+//  Edit this file to update text, prices, hours, events, etc.
+//  No need to touch index.html for routine content changes.
+// ============================================================
 
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="business.business">
-  <meta property="og:title" content="Nifty Thrifty Thrift Shop · Wilmington, NC">
-  <meta property="og:description" content="Wilmington's favorite thrift bin store. Two locations packed with daily restocks, weekly deals, and finds you won't believe. Benefiting the homeless community.">
-  <meta property="og:url" content="https://niftythriftywilmington.com/">
-  <meta property="og:site_name" content="Nifty Thrifty Thrift Shop">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:image" content="https://i.ibb.co/jZ306kpK/3e1f00232e970babcc1a327bf56867ca204af03f4bd2644f55ee724d7ea6b1a2.png">
-  <meta property="og:image:alt" content="Nifty Thrifty Thrift Shop — Market St location, Wilmington NC">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="business:contact_data:street_address" content="1614 Market St">
-  <meta property="business:contact_data:locality" content="Wilmington">
-  <meta property="business:contact_data:region" content="NC">
-  <meta property="business:contact_data:postal_code" content="28401">
-  <meta property="business:contact_data:country_name" content="United States">
+const SITE = {
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Nifty Thrifty Thrift Shop · Wilmington, NC">
-  <meta name="twitter:description" content="Two Wilmington locations · Daily restocks · $1/lb weekends · Benefiting the homeless community.">
-  <meta name="twitter:image" content="https://i.ibb.co/jZ306kpK/3e1f00232e970babcc1a327bf56867ca204af03f4bd2644f55ee724d7ea6b1a2.png">
-  <meta name="twitter:image:alt" content="Nifty Thrifty Thrift Shop — Market St location, Wilmington NC">
+  // ----------------------------------------------------------
+  // STORE INFO
+  // ----------------------------------------------------------
+  name: "Nifty Thrifty Thrift Shop",
+  tagline: "Benefiting the homeless community · Wilmington, NC",
+  heroEyebrow: "Wilmington's favorite thrift bin store",
+  heroHeadline: ["Thrift more.", "Spend less."],
+  heroBody: "Helping our neighbors in need — two Wilmington locations packed with daily new arrivals, weekly deals, and finds you won't believe.",
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="images/nifty-thrifty-favicon.png">
-  <link rel="apple-touch-icon" href="images/nifty-thrifty-favicon.png">
+  // ----------------------------------------------------------
+  // ANNOUNCEMENT BAR FALLBACK
+  // ----------------------------------------------------------
+  // This shows on Tue/Wed/Fri (days without a day-specific message).
+  // Day-specific messages (Mon/Thu/Sat/Sun) are defined in index.html
+  // and will rotate automatically based on the current day of the week.
+  announcement: "🛍️ <strong>Two Wilmington locations</strong> &nbsp;·&nbsp; New arrivals every day &nbsp;·&nbsp; $1/lb at Market St every Sat &amp; Sun &nbsp;·&nbsp; Double stamps every Thursday",
 
-  <!-- Schema.org structured data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://niftythriftywilmington.com/#org",
-        "name": "Nifty Thrifty Thrift Shop",
-        "url": "https://niftythriftywilmington.com/",
-        "description": "Wilmington's favorite thrift bin store, benefiting the homeless community. Two locations with daily restocks and weekly deals.",
-        "logo": "https://i.ibb.co/VWXtq64s/Nifty-Stamps.png",
-        "sameAs": [
-          "https://www.facebook.com/Niftythriftyilm",
-          "https://www.instagram.com/niftythriftyilm"
-        ]
-      },
-      {
-        "@type": "ThriftStore",
-        "@id": "https://niftythriftywilmington.com/#market-st",
-        "name": "Nifty Thrifty Thrift Shop — Market St",
-        "image": "https://i.ibb.co/jZ306kpK/3e1f00232e970babcc1a327bf56867ca204af03f4bd2644f55ee724d7ea6b1a2.png",
-        "url": "https://niftythriftywilmington.com/#locations",
-        "telephone": "+1-910-617-5031",
-        "parentOrganization": { "@id": "https://niftythriftywilmington.com/#org" },
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "1614 Market St",
-          "addressLocality": "Wilmington",
-          "addressRegion": "NC",
-          "postalCode": "28401",
-          "addressCountry": "US"
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": 34.23651170077449,
-          "longitude": -77.92788965493592
-        },
-        "openingHoursSpecification": [
-          {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-            "opens": "10:00",
-            "closes": "17:30"
-          },
-          {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Saturday","Sunday"],
-            "opens": "10:00",
-            "closes": "17:00"
-          }
-        ],
-        "priceRange": "$",
-        "hasMap": "https://maps.google.com/?q=1614+Market+St,+Wilmington,+NC+28401"
-      },
-      {
-        "@type": "ThriftStore",
-        "@id": "https://niftythriftywilmington.com/#carolina-beach-rd",
-        "name": "Nifty Thrifty Thrift Shop — Carolina Beach Rd",
-        "image": "https://i.ibb.co/V0WtB9qm/a07a520df73334c65e8dd6bf5f970a517ed2c8b23856ecd27e654786a6ad8df9.png",
-        "url": "https://niftythriftywilmington.com/#locations",
-        "telephone": "+1-910-769-5082",
-        "parentOrganization": { "@id": "https://niftythriftywilmington.com/#org" },
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "3722 Carolina Beach Rd",
-          "addressLocality": "Wilmington",
-          "addressRegion": "NC",
-          "postalCode": "28412",
-          "addressCountry": "US"
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": 34.177476720072754,
-          "longitude": -77.92682794597982
-        },
-        "openingHoursSpecification": [
-          {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-            "opens": "10:00",
-            "closes": "17:30"
-          },
-          {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Saturday","Sunday"],
-            "opens": "10:00",
-            "closes": "17:00"
-          }
-        ],
-        "priceRange": "$",
-        "hasMap": "https://maps.google.com/?q=3722+Carolina+Beach+Rd,+Wilmington,+NC"
-      }
+  // ----------------------------------------------------------
+  // RIBBON (set show: false to hide)
+  // ----------------------------------------------------------
+  ribbon: {
+    show: true,
+    headline: "Two Wilmington locations to serve you",
+    detail: "Carolina Beach Rd & Market St · Open 7 days a week · Helping our neighbors in need",
+    address: "Wilmington, NC"
+  },
+
+  // ----------------------------------------------------------
+  // WEEKLY SCHEDULE
+  // ----------------------------------------------------------
+  weeklySchedule: [
+    { day: "Mon", promo: "Mega Monday",    desc: "Big restock at Market St — new items hit the floor",  hot: true  },
+    { day: "Tue", promo: "New arrivals",   desc: "Fresh finds added all day at both locations",          hot: false },
+    { day: "Wed", promo: "New arrivals",   desc: "Fresh finds added all day at both locations",          hot: false },
+    { day: "Thu", promo: "Double Stamps",  desc: "2 stamps per $10 spent — both locations",             hot: true  },
+    { day: "Fri", promo: "New arrivals",   desc: "Fresh finds added all day at both locations",          hot: false },
+    { day: "Sat", promo: "Weekend deal",   desc: "$1/lb at Market St · BOGO free all day at CB",        hot: true  },
+    { day: "Sun", promo: "Fill-A-Bag",     desc: "3–5pm Market St, fill any bag $10 · $1/lb all day",   hot: true  },
+  ],
+
+  // ----------------------------------------------------------
+  // PRICING
+  // Two stores, two formats — Market St is bin/lb, CB is hanging garment
+  // ----------------------------------------------------------
+  pricingCategories: [
+    {
+      icon: "tag",
+      title: "Market St · Bin Pricing",
+      rows: [
+        { days: "Mon – Fri · Clothing", price: "$2.00 / lb"   },
+        { days: "Mon – Fri · Linens",   price: "$2.50 / item" },
+        { days: "Sat & Sun · Clothing", price: "$1.00 / lb"   },
+        { days: "Sat & Sun · Linens",   price: "$1.00 / item" },
+      ]
+    },
+    {
+      icon: "shirt",
+      title: "Carolina Beach Rd · Rack Pricing",
+      rows: [
+        { days: "All clothing",                 price: "From $1"   },
+        { days: "All clothing — every day",     price: "BOGO free" },
+        { days: "Women's $1 rack (Sat & Sun)",  price: "B1G3 free" },
+      ]
+    },
+  ],
+
+  // ----------------------------------------------------------
+  // BOGO — Carolina Beach Rd
+  // ----------------------------------------------------------
+  bogoItems: [
+    { label: "All Clothing",      icon: "shirt"      },
+    { label: "Costume Jewelry",   icon: "gem"        },
+    { label: "Shoes",             icon: "footprints" },
+    { label: "DVDs",              icon: "disc"       },
+  ],
+
+  // ----------------------------------------------------------
+  // EVENTS — recurring weekly anchors
+  // ----------------------------------------------------------
+  events: [
+    {
+      date: "Every Monday · 10am – 5:30pm",
+      name: "Mega Monday Restock",
+      location: "1614 Market St",
+      pills: ["Brand new inventory", "First come, first pick", "Full floor restock", "Market St only"]
+    },
+    {
+      date: "Every Thursday · All day",
+      name: "Double Stamp Day",
+      location: "Both locations",
+      pills: ["2 stamps per $10 spent", "Both locations", "All purchases qualify", "Cards interchangeable"]
+    },
+    {
+      date: "Every Saturday & Sunday",
+      name: "Weekend $1/lb Sale",
+      location: "1614 Market St",
+      pills: ["$1/lb clothing", "$1/item linens", "All weekend long", "Market St only"]
+    },
+    {
+      date: "Every Sunday · 3pm – 5pm",
+      name: "Fill-A-Bag Sunday",
+      location: "1614 Market St",
+      pills: ["Fill any bag for $10", "Clothing & linens", "Market St only", "No limit"]
+    },
+  ],
+
+  // ----------------------------------------------------------
+  // LOCATIONS
+  // ----------------------------------------------------------
+  locations: [
+    {
+      tag: "Bin Store",
+      image: "https://i.ibb.co/jZ306kpK/3e1f00232e970babcc1a327bf56867ca204af03f4bd2644f55ee724d7ea6b1a2.png",
+      imageAlt: "Nifty Thrifty Market St — bin store, Wilmington NC",
+      address: "1614 Market St",
+      city: "Wilmington, NC 28401",
+      phone: "910.617.5031",
+      hours: ["Mon–Fri: 10am – 5:30pm", "Sat: 10am – 5pm", "Sun: 10am – 5pm"],
+      mapsUrl: "https://maps.google.com/?q=1614+Market+St,+Wilmington,+NC+28401",
+      storeType: "Pay-by-the-pound bin store · Mega Monday restocks",
+    },
+    {
+      tag: "Rack Store",
+      image: "https://i.ibb.co/V0WtB9qm/a07a520df73334c65e8dd6bf5f970a517ed2c8b23856ecd27e654786a6ad8df9.png",
+      imageAlt: "Nifty Thrifty Carolina Beach Rd — rack store, Wilmington NC",
+      address: "3722 Carolina Beach Rd",
+      city: "Wilmington, NC 28412",
+      phone: "910.769.5082",
+      hours: ["Mon–Fri: 10am – 5:30pm", "Sat: 10am – 5pm", "Sun: 10am – 5pm"],
+      mapsUrl: "https://maps.google.com/?q=3722+Carolina+Beach+Rd,+Wilmington,+NC",
+      storeType: "Hanging garments from $1 · All clothing BOGO free every day",
+    },
+  ],
+
+  // ----------------------------------------------------------
+  // STAMPS / LOYALTY
+  // ----------------------------------------------------------
+  stamps: {
+    body: "Get a stamp for every $10 you spend — at either location. Collect 10 stamps and earn $10 off your next purchase. On Thursdays, earn double stamps. Stamps are interchangeable between both locations.",
+    rewardAmount: "$10 off",
+    rewardDetail: "when you collect 10 stamps",
+    cardImage: "https://i.ibb.co/VWXtq64s/Nifty-Stamps.png",
+  },
+
+  // ----------------------------------------------------------
+  // COMMUNITY / MISSION
+  // ----------------------------------------------------------
+  community: {
+    body: [
+      "Our mission is to help our neighbors in need. Our heart lies with the Good Shepherd Center — guests receive vouchers so that as they begin a new chapter, they can come into either store for whatever they need to make their place feel like home.",
+      "Beyond the Good Shepherd, we help anyone who comes through our doors — families who've lost everything in a fire, someone who just needs a fresh set of clothes. We do what we can, every single day.",
+      "We also accept donations at both locations during store hours. Every item donated stays right here in Wilmington and goes toward helping someone who needs it most.",
+    ],
+    donationItems: [
+      "Clothing (all sizes)",
+      "Shoes",
+      "Linens & towels",
+      "Housewares & small appliances",
+      "Books, DVDs & games",
+      "Toys & children's items",
+      "Jewelry & accessories",
+    ],
+    stats: [
+      { num: "11", label: "years in\nWilmington" },
+      { num: "2",  label: "store\nlocations"    },
     ]
-  }
-  </script>
+  },
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,400;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; background: #f0f0f0; color: #222; }
+  // ----------------------------------------------------------
+  // SOCIAL LINKS
+  // ----------------------------------------------------------
+  social: {
+    facebook:  "https://www.facebook.com/Niftythriftyilm",
+    instagram: "https://www.instagram.com/niftythriftyilm",
+  },
 
-    .w { background: #fff; max-width: 100%; margin: 0; border: none; border-radius: 0; overflow: hidden; box-shadow: none; }
+  // ----------------------------------------------------------
+  // FOOTER NAV LINKS
+  // ----------------------------------------------------------
+  footerLinks: [
+    { label: "Weekly deals", anchor: "#deals"     },
+    { label: "Events",       anchor: "#events"    },
+    { label: "Locations",    anchor: "#locations" },
+    { label: "Contact",      anchor: "#contact"   },
+  ],
 
-    /* NAV */
-    .nav { background: #fff; border-bottom: 1px solid #eee; padding: 0 calc(max(1.5rem, 50% - 600px)); display: flex; align-items: center; justify-content: space-between; height: 62px; position: sticky; top: 0; z-index: 100; }
-    .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .nav-wordmark { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700; font-size: 22px; color: #e8197c; line-height: 1; letter-spacing: -0.01em; }
-    .nav-wordmark span { display: block; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 500; font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: #999; margin-top: 3px; }
-    .nav-links { display: flex; gap: 1.5rem; align-items: center; }
-    .nav-links a { font-size: 13px; color: #444; text-decoration: none; transition: color 0.2s; }
-    .nav-links a:hover { color: #e8197c; }
-    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
-    .nav-hamburger span { display: block; width: 22px; height: 2px; background: #444; border-radius: 2px; transition: all 0.3s; }
-    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
-    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    .nav-mobile-menu { display: none; position: absolute; top: 62px; left: 0; right: 0; background: #fff; border-bottom: 1px solid #eee; box-shadow: 0 8px 24px rgba(0,0,0,0.08); padding: 1rem 2rem; flex-direction: column; gap: 1rem; z-index: 99; }
-    .nav-mobile-menu.open { display: flex; }
-    .nav-mobile-menu a { font-size: 15px; color: #444; text-decoration: none; padding: 0.4rem 0; border-bottom: 0.5px solid #f0f0f0; }
-    .nav-mobile-menu a:last-child { border-bottom: none; }
+  // ----------------------------------------------------------
+  // PHOTO STRIP (inside-the-store section)
+  // ----------------------------------------------------------
+  photoStrip: [
+    { src: "https://i.ibb.co/3ydNpFQ4/nifty-shoes.jpg",         alt: "Shoes and accessories wall" },
+    { src: "https://i.ibb.co/YTX5mZmc/Interior-with-bins.jpg",  alt: "Store interior with bins"   },
+  ],
 
-    /* ANNOUNCE */
-    .announce { background: #2a2a2a; padding: 0.7rem calc(max(1.5rem, 50% - 600px)); text-align: center; }
-    .announce p { color: #fff; font-size: 12px; letter-spacing: 0.5px; line-height: 1.6; display: inline-flex; align-items: center; gap: 6px; flex-wrap: wrap; justify-content: center; transition: opacity 0.4s ease; }
-    .announce strong { color: #e8197c; }
-    .announce .lucide { color: #e8197c; margin-right: 2px; }
-
-    /* HERO */
-    .hero { position: relative; height: 720px; overflow: hidden; }
-    .hero-img { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; display: block; }
-    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(105deg, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.62) 40%, rgba(0,0,0,0.35) 70%, rgba(0,0,0,0.45) 100%); }
-    .hero-content { position: absolute; inset: 0; display: flex; align-items: center; padding: 0 calc(max(1.5rem, 50% - 600px)); }
-    .hero-text { max-width: 580px; }
-    .hero-eyebrow { font-size: 12px; letter-spacing: 3.5px; text-transform: uppercase; color: #e8197c; margin-bottom: 1.5rem; font-weight: 600; }
-    .hero-h1 { font-family: 'Playfair Display', serif; font-size: 78px; font-weight: 800; color: #fff; line-height: 1.02; margin-bottom: 1.5rem; letter-spacing: -0.02em; }
-    .hero-h1 em { font-style: italic; font-weight: 700; color: #e8197c; }
-    .hero-tagline { font-size: 17px; color: rgba(255,255,255,0.82); line-height: 1.6; margin-bottom: 2.25rem; max-width: 460px; font-weight: 400; }
-    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
-
-    /* BUTTONS */
-    .btn-pink { background: #e8197c; color: #fff; border: none; padding: 11px 24px; border-radius: 8px; font-size: 13px; cursor: pointer; font-family: 'Inter', sans-serif; box-shadow: 0 2px 10px rgba(232,25,124,0.35); text-decoration: none; display: inline-block; transition: background 0.2s, transform 0.1s; }
-    .btn-pink:hover { background: #c9136a; transform: translateY(-1px); }
-    .btn-white { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.4); padding: 11px 24px; border-radius: 8px; font-size: 13px; cursor: pointer; font-family: 'Inter', sans-serif; text-decoration: none; display: inline-block; transition: border-color 0.2s, background 0.2s; }
-    .btn-white:hover { border-color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.08); }
-
-    /* RIBBON */
-    .ribbon { background: #e8197c; padding: 1rem calc(max(1.5rem, 50% - 600px)); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
-    .ribbon-left { color: #fff; }
-    .ribbon-left strong { font-size: 16px; font-weight: 500; display: block; }
-    .ribbon-left span { font-size: 13px; opacity: 0.85; }
-    .ribbon-right { font-size: 13px; color: #fff; text-align: right; display: inline-flex; align-items: center; gap: 6px; font-weight: 500; }
-    .ribbon-right .lucide { color: rgba(255,255,255,0.85); }
-
-    /* SECTIONS */
-    .sec { padding: 7rem calc(max(1.5rem, 50% - 600px)); }
-    .sec-alt { background: #f8f8f8; }
-    .sec-title { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 800; color: #111; margin-bottom: 2.5rem; line-height: 1.1; letter-spacing: -0.01em; }
-    .sec-title em { font-style: italic; font-weight: 700; color: #e8197c; }
-
-    /* WEEKLY SCHEDULE */
-    .week-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
-    .day-card { background: #fff; border: 1px solid #efefef; border-radius: 12px; padding: 1.1rem 0.75rem; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-    .day-card.hot { border-color: #f0a8cc; background: #fff9fc; box-shadow: 0 2px 12px rgba(232,25,124,0.1); }
-    .day-name { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; color: #bbb; margin-bottom: 0.6rem; }
-    .day-card.hot .day-name { color: #e8197c; }
-    .day-promo { font-size: 13px; font-weight: 500; color: #111; line-height: 1.3; margin-bottom: 0.4rem; }
-    .day-desc { font-size: 12px; color: #888; line-height: 1.4; }
-    .day-dot { width: 6px; height: 6px; border-radius: 50%; background: #e0e0e0; margin: 0.5rem auto 0; }
-    .day-card.hot .day-dot { background: #e8197c; }
-    .day-card.today { position: relative; border-color: #e8197c; box-shadow: 0 4px 16px rgba(232,25,124,0.2); transform: translateY(-2px); }
-    .day-card.today .day-name { color: #fff; }
-    .today-pill { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: #e8197c; color: #fff; font-size: 9px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 10px; border-radius: 99px; box-shadow: 0 2px 8px rgba(232,25,124,0.4); white-space: nowrap; }
-
-    /* PHOTO STRIP */
-    .photo-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 3rem; }
-    .photo-strip img { width: 100%; height: 280px; object-fit: cover; display: block; border-radius: 14px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
-
-    /* PRICING */
-    .pricing-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
-    .price-card { background: #fff; border: 1px solid #ececec; border-radius: 18px; overflow: hidden; box-shadow: 0 1px 2px rgba(0,0,0,0.03); padding: 2rem 2rem 1.5rem; transition: box-shadow 0.3s, transform 0.3s; }
-    .price-card:hover { box-shadow: 0 12px 32px rgba(0,0,0,0.08); transform: translateY(-2px); }
-    .price-card-head { display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem; }
-    .price-card-head-icon { width: 38px; height: 38px; border-radius: 11px; background: #fbeaf0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #e8197c; }
-    .price-card-title { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 22px; color: #111; letter-spacing: -0.01em; }
-    .price-rows { display: flex; flex-direction: column; gap: 0; }
-    .price-row { display: flex; justify-content: space-between; align-items: baseline; padding: 0.95rem 0; border-bottom: 1px solid #f4f4f4; }
-    .price-row:last-child { border-bottom: none; }
-    .price-day { font-size: 13px; color: #888; font-weight: 500; letter-spacing: 0.2px; }
-    .price-amt { font-size: 18px; font-weight: 600; color: #111; }
-    .price-amt em { color: #e8197c; font-style: normal; font-weight: 700; font-size: 22px; }
-
-    /* BOGO */
-    .bogo-sec { background: #111; color: #fff; }
-    .bogo-sec .sec-title { color: #fff; }
-    .bogo-sec .sec-title em { color: #e8197c; }
-    .bogo-sub { font-size: 16px; color: #aaa; line-height: 1.6; margin-top: -1.5rem; margin-bottom: 2.75rem; max-width: 560px; }
-    .bogo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
-    .bogo-card { position: relative; background: #1a1a1a; border: 1px solid #232323; border-radius: 18px; padding: 2rem 1rem 1.75rem; display: flex; flex-direction: column; align-items: center; gap: 1.1rem; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
-    .bogo-card:hover { transform: translateY(-4px); border-color: #e8197c; box-shadow: 0 12px 32px rgba(232,25,124,0.18); }
-    .bogo-badge { position: absolute; top: 12px; right: 12px; font-size: 9px; letter-spacing: 1.5px; font-weight: 700; color: #fff; background: #e8197c; padding: 4px 9px; border-radius: 99px; box-shadow: 0 2px 8px rgba(232,25,124,0.45); }
-    .bogo-icon-wrap { width: 64px; height: 64px; border-radius: 50%; background: rgba(232,25,124,0.12); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #e8197c; box-shadow: 0 0 0 1px rgba(232,25,124,0.2), 0 0 24px rgba(232,25,124,0.15); transition: box-shadow 0.3s ease; }
-    .bogo-card:hover .bogo-icon-wrap { box-shadow: 0 0 0 1px rgba(232,25,124,0.4), 0 0 32px rgba(232,25,124,0.3); }
-    .bogo-label { font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 700; color: #fff; line-height: 1.2; letter-spacing: -0.005em; }
-
-    /* EVENTS */
-    .events-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; }
-    .event-card { background: #fff; border: 1px solid #efefef; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.07); border-left: 4px solid #e8197c; }
-    .event-card-body { padding: 1.5rem; }
-    .event-date-tag { display: inline-block; background: #fbeaf0; color: #c4155e; font-size: 12px; padding: 4px 12px; border-radius: 6px; margin-bottom: 0.75rem; }
-    .event-name { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #111; margin-bottom: 0.35rem; letter-spacing: -0.01em; }
-    .event-loc { font-size: 13px; color: #999; margin-bottom: 1rem; }
-    .pill-row { display: flex; flex-wrap: wrap; gap: 6px; }
-    .pill { font-size: 12px; background: #f5f5f5; color: #555; padding: 4px 11px; border-radius: 99px; border: 0.5px solid #e8e8e8; }
-
-    /* LOCATIONS */
-    .loc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-    .loc-card { background: #fff; border: 1px solid #efefef; border-radius: 16px; overflow: hidden; box-shadow: 0 6px 24px rgba(0,0,0,0.08); }
-    .loc-img { width: 100%; height: 220px; object-fit: cover; object-position: center; display: block; }
-    .loc-body { padding: 1.6rem; }
-    .loc-tag { display: inline-block; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; background: #111; color: #e8197c; padding: 4px 12px; border-radius: 6px; margin-bottom: 0.85rem; }
-    .loc-addr { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; color: #111; margin-bottom: 0.4rem; letter-spacing: -0.01em; }
-    .loc-city { font-size: 14px; color: #999; margin-bottom: 0.5rem; }
-    .loc-phone { font-size: 15px; color: #444; font-weight: 500; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; }
-    .loc-phone .lucide { color: #999; }
-    .loc-phone a { color: inherit; text-decoration: none; }
-    .loc-phone a:hover { color: #e8197c; }
-    .loc-hours { font-size: 13px; color: #666; line-height: 1.9; border-top: 0.5px solid #f0f0f0; padding-top: 0.85rem; display: flex; gap: 10px; align-items: flex-start; }
-    .loc-hours .lucide { color: #bbb; flex-shrink: 0; margin-top: 4px; }
-    .loc-hours-list { flex: 1; }
-    .loc-map-wrap { margin-top: 1rem; border-radius: 10px; overflow: hidden; border: 1px solid #efefef; height: 180px; position: relative; }
-    .loc-map-iframe { width: 100%; height: 100%; border: 0; display: block; }
-    .loc-map { margin-top: 0.75rem; display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #e8197c; border: 1px solid #e8197c; border-radius: 8px; padding: 8px 18px; text-decoration: none; transition: background 0.2s, color 0.2s; }
-    .loc-map:hover { background: #e8197c; color: #fff; }
-
-    /* STAMPS */
-    .stamps-sec { background: #111; color: #fff; }
-    .stamps-sec .sec-title { color: #fff; }
-    .stamps-inner { display: flex; gap: 2.5rem; align-items: center; flex-wrap: wrap; }
-    .stamps-text { flex: 1; min-width: 200px; }
-    .stamps-text p { color: #aaa; font-size: 15px; line-height: 1.8; }
-    .stamp-reward { margin-top: 1rem; background: #1a1a1a; border-radius: 14px; padding: 1.1rem 1.5rem; display: flex; align-items: center; gap: 1.1rem; box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
-    .stamp-reward-icon { width: 48px; height: 48px; border-radius: 50%; background: rgba(232,25,124,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #e8197c; }
-    .stamp-reward-text { display: flex; align-items: baseline; gap: 0.85rem; flex-wrap: wrap; }
-    .stamp-reward-big { font-family: 'Playfair Display', serif; font-size: 44px; font-weight: 800; color: #e8197c; line-height: 1; letter-spacing: -0.02em; }
-    .stamp-reward-label { font-size: 13px; color: #888; line-height: 1.5; }
-    .stamp-img { width: 260px; border-radius: 14px; display: block; box-shadow: 0 8px 28px rgba(0,0,0,0.5); flex-shrink: 0; }
-
-    /* COMMUNITY */
-    .community-sec { background: #fbeaf0; }
-    .comm-inner { display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; }
-    .comm-text { flex: 1; min-width: 200px; }
-    .comm-text p { font-size: 15px; color: #555; line-height: 1.8; }
-    .comm-text p + p { margin-top: 0.75rem; }
-    .comm-stats { display: flex; gap: 2.5rem; flex-shrink: 0; }
-    .c-stat { text-align: center; }
-    .c-stat-num { font-family: 'Playfair Display', serif; font-size: 64px; font-weight: 800; color: #e8197c; line-height: 1; letter-spacing: -0.03em; }
-    .c-stat-label { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1px; white-space: pre-line; }
-
-    /* FOOTER */
-    .footer { background: #0d0d0d; padding: 4rem calc(max(1.5rem, 50% - 600px)) 2rem; border-top: 3px solid #e8197c; }
-    .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
-    .footer-col h4 { font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: #e8197c; margin-bottom: 1.1rem; font-weight: 600; }
-    .footer-brand { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700; font-size: 26px; color: #e8197c; line-height: 1.1; margin-bottom: 0.5rem; letter-spacing: -0.01em; }
-    .footer-brand-sub { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 14px; letter-spacing: 4px; text-transform: uppercase; color: #fff; margin-bottom: 1rem; }
-    .footer-tagline { font-size: 13px; color: #888; line-height: 1.7; margin-bottom: 1.25rem; max-width: 280px; }
-    .footer-social { display: flex; gap: 8px; }
-    .soc-btn { width: 38px; height: 38px; border-radius: 50%; border: 1px solid #2a2a2a; display: flex; align-items: center; justify-content: center; cursor: pointer; text-decoration: none; transition: border-color 0.2s, color 0.2s, background 0.2s; color: #888; }
-    .soc-btn:hover { border-color: #e8197c; color: #fff; background: #e8197c; }
-    .footer-loc-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 15px; color: #fff; margin-bottom: 0.4rem; letter-spacing: -0.005em; }
-    .footer-loc-detail { font-size: 13px; color: #888; line-height: 1.7; }
-    .footer-loc-detail a { color: #aaa; text-decoration: none; transition: color 0.2s; }
-    .footer-loc-detail a:hover { color: #e8197c; }
-    .footer-links-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.6rem; }
-    .footer-links-list a { color: #aaa; font-size: 13px; text-decoration: none; transition: color 0.2s; }
-    .footer-links-list a:hover { color: #e8197c; }
-    .footer-bottom { border-top: 1px solid #1f1f1f; padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-    .footer-copy { font-size: 12px; color: #555; }
-    .footer-mission-tag { font-size: 12px; color: #777; display: inline-flex; align-items: center; gap: 6px; }
-    .footer-mission-tag .lucide { color: #e8197c; }
-
-    /* RESPONSIVE */
-    @media (max-width: 720px) {
-      .nav-links { display: none; }
-      .nav-hamburger { display: flex; }
-      .hero { height: 540px; }
-      .hero-content { padding: 0 1.5rem; }
-      .hero-h1 { font-size: 48px; }
-      .hero-tagline { font-size: 15px; }
-      .ribbon { flex-direction: column; gap: 0.25rem; text-align: left; }
-      .ribbon-right { text-align: left; justify-content: flex-start; }
-      .sec { padding: 3rem 1.25rem; }
-      .sec-title { font-size: 32px; margin-bottom: 1.75rem; }
-      .week-grid { grid-template-columns: repeat(3, 1fr); }
-      .week-grid > .day-card { grid-column: auto; }
-      .week-grid > .day-card:nth-child(7) { grid-column: 1 / -1; }
-      .photo-strip { grid-template-columns: 1fr; }
-      .photo-strip img { height: 200px; }
-      .pricing-cards { grid-template-columns: 1fr; }
-      .price-card { padding: 1.5rem 1.5rem 1rem; }
-      .bogo-grid { grid-template-columns: repeat(2, 1fr); }
-      .bogo-sub { font-size: 14px; margin-bottom: 2rem; }
-      .stamps-inner { flex-direction: column; }
-      .stamp-img { width: 100%; }
-      .comm-inner { flex-direction: column; }
-      .comm-stats { justify-content: center; }
-      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
-      .footer-bottom { flex-direction: column; align-items: flex-start; }
-    }
-    @media (max-width: 480px) {
-      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
-    }
-    @media (max-width: 420px) {
-      .hero-h1 { font-size: 40px; }
-      .sec-title { font-size: 28px; }
-      .c-stat-num { font-size: 52px; }
-    }
-
-    /* Scroll margin */
-    #deals, #pricing, #bogo, #events, #locations, #stamps, #community, #contact {
-      scroll-margin-top: 80px;
-    }
-
-    /* Scroll-triggered fade-in */
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; will-change: opacity, transform; }
-    .reveal.revealed { opacity: 1; transform: translateY(0); }
-    .reveal-stagger > * { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; will-change: opacity, transform; }
-    .reveal-stagger.revealed > *:nth-child(1) { transition-delay: 0s; }
-    .reveal-stagger.revealed > *:nth-child(2) { transition-delay: 0.08s; }
-    .reveal-stagger.revealed > *:nth-child(3) { transition-delay: 0.16s; }
-    .reveal-stagger.revealed > *:nth-child(4) { transition-delay: 0.24s; }
-    .reveal-stagger.revealed > *:nth-child(5) { transition-delay: 0.32s; }
-    .reveal-stagger.revealed > *:nth-child(6) { transition-delay: 0.40s; }
-    .reveal-stagger.revealed > *:nth-child(7) { transition-delay: 0.48s; }
-    .reveal-stagger.revealed > * { opacity: 1; transform: translateY(0); }
-    .reveal.no-transition, .reveal-stagger.no-transition > * { transition: none !important; }
-
-    /* Reduced motion */
-    @media (prefers-reduced-motion: reduce) {
-      .reveal, .reveal-stagger > * { opacity: 1 !important; transform: none !important; transition: none !important; }
-    }
-
-    /* Today pill pulse */
-    @keyframes todayPulse {
-      0%, 100% { box-shadow: 0 2px 8px rgba(232,25,124,0.4); }
-      50%       { box-shadow: 0 2px 14px rgba(232,25,124,0.7); }
-    }
-    .today-pill { animation: todayPulse 2.4s ease-in-out infinite; }
-
-    /* Lucide icons */
-    .lucide { display: inline-block; vertical-align: middle; flex-shrink: 0; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-    .lucide-14 { width: 14px; height: 14px; }
-    .lucide-16 { width: 16px; height: 16px; }
-    .lucide-18 { width: 18px; height: 18px; }
-    .lucide-20 { width: 20px; height: 20px; }
-    .lucide-26 { width: 26px; height: 26px; }
-
-    /* Eyebrow contrast tokens */
-    .sec-label            { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #c4155e; margin-bottom: 0.85rem; font-weight: 600; }
-    .sec-alt .sec-label   { color: #c4155e; }
-    .community-sec .sec-label { color: #a00d47; }
-    .stamps-sec .sec-label    { color: #f06aab; }
-    .bogo-sec .sec-label      { color: #f06aab; }
-  </style>
-</head>
-<body>
-<div class="w">
-
-  <!-- NAV -->
-  <nav class="nav" id="top">
-    <a class="nav-brand" href="#top" aria-label="Nifty Thrifty home">
-      <div class="nav-wordmark" id="nav-wordmark"></div>
-    </a>
-    <div class="nav-links" id="nav-links"></div>
-    <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
-    <div class="nav-mobile-menu" id="mobile-menu"></div>
-  </nav>
-
-  <!-- ANNOUNCE -->
-  <div class="announce" id="announce-bar"></div>
-
-  <!-- HERO -->
-  <div class="hero">
-    <img class="hero-img" src="images/hero.jpg" alt="Nifty Thrifty store interior" fetchpriority="high">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <div class="hero-text">
-        <div class="hero-eyebrow" id="hero-eyebrow"></div>
-        <h1 class="hero-h1" id="hero-h1"></h1>
-        <p class="hero-tagline" id="hero-tagline"></p>
-        <div class="hero-btns">
-          <a href="#deals" class="btn-pink">See this week's deals</a>
-          <a href="#locations" class="btn-white">Find a location</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- RIBBON -->
-  <div class="ribbon" id="ribbon"></div>
-
-  <!-- WEEKLY DEALS -->
-  <div class="sec" id="deals">
-    <div class="sec-label">Every single week</div>
-    <div class="sec-title">Your weekly deal lineup</div>
-    <div class="week-grid" id="week-grid"></div>
-  </div>
-
-  <!-- PHOTO + PRICING -->
-  <div class="sec sec-alt" id="pricing">
-    <div class="sec-label">Inside the store</div>
-    <div class="sec-title">Something for everyone</div>
-    <div class="photo-strip" id="photo-strip"></div>
-    <div class="sec-label" style="margin-top:4rem;">Bin & rack pricing</div>
-    <div class="sec-title">Two stores. <em>Both amazing.</em></div>
-    <div class="pricing-cards" id="pricing-cards"></div>
-  </div>
-
-  <!-- BOGO -->
-  <div class="sec bogo-sec" id="bogo">
-    <div class="sec-label">Carolina Beach Rd · Every day</div>
-    <div class="sec-title">Buy one. <em>Get one free.</em></div>
-    <p class="bogo-sub">All clothing is BOGO free every day at our Carolina Beach Rd location. On weekends, the women's $1 rack is Buy 1, Get 3 Free.</p>
-    <div class="bogo-grid" id="bogo-items"></div>
-  </div>
-
-  <!-- EVENTS -->
-  <div class="sec" id="events">
-    <div class="sec-label">Coming up</div>
-    <div class="sec-title">Special events</div>
-    <div class="events-grid" id="events-grid"></div>
-  </div>
-
-  <!-- LOCATIONS -->
-  <div class="sec sec-alt" id="locations">
-    <div class="sec-label">Find us</div>
-    <div class="sec-title">Two Wilmington locations</div>
-    <div class="loc-grid" id="loc-grid"></div>
-  </div>
-
-  <!-- STAMPS -->
-  <div class="sec stamps-sec" id="stamps">
-    <div class="sec-label">Loyalty rewards</div>
-    <div class="sec-title">Earn stamps. <em>Save more.</em></div>
-    <div class="stamps-inner">
-      <div class="stamps-text">
-        <p id="stamps-body"></p>
-        <div class="stamp-reward">
-          <div class="stamp-reward-icon" id="stamp-reward-icon"></div>
-          <div class="stamp-reward-text">
-            <div class="stamp-reward-big" id="stamp-reward-big"></div>
-            <div class="stamp-reward-label" id="stamp-reward-label"></div>
-          </div>
-        </div>
-      </div>
-      <img id="stamp-img" alt="Nifty Thrifty stamp card" class="stamp-img">
-    </div>
-  </div>
-
-  <!-- COMMUNITY -->
-  <div class="sec community-sec" id="community">
-    <div class="sec-label">Our mission</div>
-    <div class="sec-title">Benefiting the homeless community</div>
-    <div class="comm-inner">
-      <div class="comm-text" id="comm-text"></div>
-      <div class="comm-stats" id="comm-stats"></div>
-    </div>
-  </div>
-
-  <!-- FOOTER -->
-  <footer class="footer" id="contact">
-    <div class="footer-grid">
-      <div class="footer-col footer-brand-wrap">
-        <div class="footer-brand" id="footer-brand"></div>
-        <div class="footer-brand-sub">Thrift Shop</div>
-        <p class="footer-tagline" id="footer-tagline"></p>
-        <div class="footer-social" id="footer-social"></div>
-      </div>
-      <div class="footer-col" id="footer-loc-1"><h4>Visit us</h4></div>
-      <div class="footer-col" id="footer-loc-2"><h4>Visit us</h4></div>
-      <div class="footer-col">
-        <h4>Quick links</h4>
-        <ul class="footer-links-list" id="footer-links"></ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="footer-copy" id="footer-copy"></div>
-      <div class="footer-mission-tag" id="footer-mission-tag"></div>
-    </div>
-  </footer>
-
-</div>
-
-<script src="data.js"></script>
-<script>
-  const $ = (id) => document.getElementById(id);
-  const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c =>
-    ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c])
-  );
-
-  const ICONS = {
-    'shopping-bag': '<path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>',
-    'tag':          '<path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/>',
-    'star':         '<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>',
-    'sparkles':     '<path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/>',
-    'map-pin':      '<path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/>',
-    'home':         '<path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>',
-    'phone':        '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>',
-    'clock':        '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
-    'map':          '<path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/><path d="M15 5.764v15"/><path d="M9 3.236v15"/>',
-    'gift':         '<rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/>',
-    'heart':        '<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/>',
-    'facebook':     '<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>',
-    'instagram':    '<rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>',
-    'shirt':        '<path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/>',
-    'gem':          '<path d="M6 3h12l4 6-10 13L2 9Z"/><path d="M11 3 8 9l4 13 4-13-3-6"/><path d="M2 9h20"/>',
-    'footprints':   '<path d="m15 10.42 4.8-5.07"/><path d="M19 18h3"/><path d="M9.5 22 21.414 9.415A2 2 0 0 0 21.2 6.4l-5.61-4.208A1 1 0 0 0 14 3v2a2 2 0 0 1-1.394 1.906L8.677 8.053A1 1 0 0 0 8 9c-.155 6.393-2.082 9-4 9a2 2 0 0 0 0 4h14"/>',
-    'disc':         '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/>',
-  };
-
-  function icon(name, size = 'lucide-16') {
-    const p = ICONS[name];
-    if (!p) return '';
-    return `<svg class="lucide ${size}" viewBox="0 0 24 24" aria-hidden="true">${p}</svg>`;
-  }
-
-  // ── NAV ────────────────────────────────────────────────────
-  $('nav-wordmark').innerHTML = `${esc(SITE.name.replace(/ Thrift Shop$/i,''))}<span>Thrift Shop · Wilmington, NC</span>`;
-  $('nav-links').innerHTML = SITE.footerLinks.map(l => `<a href="${esc(l.anchor)}">${esc(l.label)}</a>`).join('') + `<a href="#stamps">How it works</a>`;
-  $('mobile-menu').innerHTML = SITE.footerLinks.map(l => `<a href="${esc(l.anchor)}" onclick="closeMobile()">${esc(l.label)}</a>`).join('') + `<a href="#stamps" onclick="closeMobile()">How it works</a>`;
-
-  // ── ANNOUNCEMENT BAR ───────────────────────────────────────
-  const announcements = [
-    { days: [1], html: `${icon('sparkles','lucide-14')} <strong>Mega Monday</strong> &nbsp;·&nbsp; Big restock at Market St right now &nbsp;·&nbsp; New arrivals all day at Carolina Beach Rd too` },
-    { days: [4], html: `${icon('star','lucide-14')} <strong>Double Stamp Thursday</strong> &nbsp;·&nbsp; Earn 2 stamps per $10 spent, today only, both locations` },
-    { days: [6], html: `${icon('tag','lucide-14')} <strong>$1/lb Weekend at Market St</strong> &nbsp;·&nbsp; Clothing &amp; linens just $1 per pound &nbsp;·&nbsp; All clothing BOGO free all day at Carolina Beach Rd` },
-    { days: [0], html: `${icon('shopping-bag','lucide-14')} <strong>Fill-A-Bag Sunday</strong> &nbsp;·&nbsp; 3–5pm at Market St, stuff any bag for just $10 &nbsp;·&nbsp; $1/lb all day at Market St &nbsp;·&nbsp; BOGO free all day at Carolina Beach Rd` },
-    { days: [],  html: SITE.announcement || `${icon('map-pin','lucide-14')} <strong>Two Wilmington locations</strong> &nbsp;·&nbsp; Market St &amp; Carolina Beach Rd &nbsp;·&nbsp; Double stamps every Thursday` },
-  ];
-
-  const today = new Date().getDay();
-  const todayMessages = announcements.filter(a => a.days.includes(today) || a.days.length === 0);
-  const bar = $('announce-bar');
-
-  function paintAnnouncement(html) { bar.innerHTML = `<p>${html}</p>`; }
-
-  if (todayMessages.length > 0) {
-    paintAnnouncement(todayMessages[0].html);
-    if (todayMessages.length > 1) {
-      let idx = 0;
-      setInterval(() => {
-        idx = (idx + 1) % todayMessages.length;
-        const p = bar.querySelector('p');
-        if (!p) return;
-        p.style.opacity = '0';
-        setTimeout(() => {
-          paintAnnouncement(todayMessages[idx].html);
-          requestAnimationFrame(() => {
-            const np = bar.querySelector('p');
-            if (np) { np.style.opacity = '0'; requestAnimationFrame(() => { np.style.opacity = '1'; }); }
-          });
-        }, 400);
-      }, 6000);
-    }
-  }
-
-  // ── HERO ───────────────────────────────────────────────────
-  $('hero-eyebrow').textContent = SITE.heroEyebrow;
-  $('hero-h1').innerHTML = SITE.heroHeadline.map((l, i) =>
-    i === SITE.heroHeadline.length - 1 ? `<em>${esc(l)}</em>` : `${esc(l)}<br>`
-  ).join('');
-  $('hero-tagline').textContent = SITE.heroBody;
-
-  // ── RIBBON ─────────────────────────────────────────────────
-  // Computes the next open/close moment based on standard hours:
-  //   Mon–Fri 10am–5:30pm, Sat–Sun 10am–5pm
-  function getHoursStatus() {
-    const now = new Date();
-    const day = now.getDay(); // 0=Sun ... 6=Sat
-    const minutes = now.getHours() * 60 + now.getMinutes();
-    const isWeekend = day === 0 || day === 6;
-    const openMin  = 10 * 60;                  // 10:00
-    const closeMin = isWeekend ? 17 * 60 : 17 * 60 + 30; // 5:00 or 5:30
-    const fmt = (mins) => {
-      const h = Math.floor(mins / 60);
-      const m = mins % 60;
-      const period = h >= 12 ? 'pm' : 'am';
-      const hr = ((h + 11) % 12) + 1;
-      return m === 0 ? `${hr}${period}` : `${hr}:${String(m).padStart(2,'0')}${period}`;
-    };
-    if (minutes < openMin) {
-      return `Open today at ${fmt(openMin)}`;
-    }
-    if (minutes < closeMin) {
-      return `Open until ${fmt(closeMin)} today`;
-    }
-    // Closed for the day — next open is tomorrow
-    const tomorrowIsWeekend = ((day + 1) % 7) === 0 || ((day + 1) % 7) === 6;
-    const tomorrowOpen = 10 * 60;
-    const tomorrowLabel = ((day + 1) % 7) === 1 ? 'Monday' :
-                          ((day + 1) % 7) === 0 ? 'Sunday' :
-                          'tomorrow';
-    return `Opens ${fmt(tomorrowOpen)} ${tomorrowLabel}`;
-  }
-
-  if (SITE.ribbon?.show) {
-    $('ribbon').innerHTML = `
-      <div class="ribbon-left"><strong>${esc(SITE.ribbon.headline)}</strong><span>${esc(SITE.ribbon.detail)}</span></div>
-      <div class="ribbon-right">${icon('clock','lucide-14')} <span>${esc(getHoursStatus())}</span></div>`;
-  } else {
-    $('ribbon').style.display = 'none';
-  }
-
-  // ── WEEKLY SCHEDULE ────────────────────────────────────────
-  const dayIndex = { Sun:0, Mon:1, Tue:2, Wed:3, Thu:4, Fri:5, Sat:6 };
-  $('week-grid').innerHTML = SITE.weeklySchedule.map(d => {
-    const isToday = dayIndex[d.day] === today;
-    const cls = ['day-card', d.hot && 'hot', isToday && 'today'].filter(Boolean).join(' ');
-    return `<div class="${cls}"${isToday ? ' aria-current="date"' : ''}>
-      ${isToday ? '<span class="today-pill">Today</span>' : ''}
-      <div class="day-name">${esc(d.day)}</div>
-      <div class="day-promo">${esc(d.promo)}</div>
-      <div class="day-desc">${esc(d.desc)}</div>
-      <div class="day-dot"></div>
-    </div>`;
-  }).join('');
-
-  // ── PHOTO STRIP ────────────────────────────────────────────
-  $('photo-strip').innerHTML = SITE.photoStrip.map(p =>
-    `<img src="${esc(p.src)}" alt="${esc(p.alt)}" loading="lazy">`
-  ).join('');
-
-  // ── PRICING ────────────────────────────────────────────────
-  function formatPrice(p) { return esc(p).replace(/(\$[\d.]+)/, '<em>$1</em>'); }
-
-  $('pricing-cards').innerHTML = SITE.pricingCategories.map(cat => `
-    <div class="price-card">
-      <div class="price-card-head">
-        <div class="price-card-head-icon">${icon(cat.icon,'lucide-16')}</div>
-        <div class="price-card-title">${esc(cat.title)}</div>
-      </div>
-      <div class="price-rows">
-        ${cat.rows.map(r => `<div class="price-row"><span class="price-day">${esc(r.days)}</span><span class="price-amt">${formatPrice(r.price)}</span></div>`).join('')}
-      </div>
-    </div>`).join('');
-
-  // ── BOGO ───────────────────────────────────────────────────
-  $('bogo-items').innerHTML = SITE.bogoItems.map(item => `
-    <div class="bogo-card">
-      <span class="bogo-badge">BOGO</span>
-      <div class="bogo-icon-wrap">${icon(item.icon,'lucide-26')}</div>
-      <div class="bogo-label">${esc(item.label)}</div>
-    </div>`).join('');
-
-  // ── EVENTS ─────────────────────────────────────────────────
-  const today_date = new Date(); today_date.setHours(0,0,0,0);
-  const activeEvents = SITE.events.filter(e => {
-    if (!e.endDate) return true;
-    const end = new Date(e.endDate); end.setHours(0,0,0,0);
-    return end >= today_date;
-  });
-  $('events-grid').innerHTML = activeEvents.length
-    ? activeEvents.map(e => `
-      <div class="event-card"><div class="event-card-body">
-        <span class="event-date-tag">${esc(e.date)}</span>
-        <div class="event-name">${esc(e.name)}</div>
-        <div class="event-loc">${esc(e.location)}</div>
-        <div class="pill-row">${e.pills.map(p => `<span class="pill">${esc(p)}</span>`).join('')}</div>
-      </div></div>`).join('')
-    : `<p style="color:#999;font-size:15px;">Check back soon for upcoming events.</p>`;
-
-  // ── LOCATIONS ──────────────────────────────────────────────
-  const knownCoords = {
-    '1614 Market St':         { lat: 34.23651170077449,  lng: -77.92788965493592 },
-    '3722 Carolina Beach Rd': { lat: 34.177476720072754, lng: -77.92682794597982 },
-  };
-  function buildMapEmbed(loc) {
-    const c = knownCoords[loc.address];
-    if (c) return `https://maps.google.com/maps?q=${c.lat},${c.lng}&z=17&output=embed`;
-    return `https://maps.google.com/maps?q=${encodeURIComponent(loc.address+', '+loc.city)}&z=15&output=embed`;
-  }
-  $('loc-grid').innerHTML = SITE.locations.map(loc => `
-    <div class="loc-card">
-      <img class="loc-img" src="${esc(loc.image)}" alt="${esc(loc.imageAlt)}" loading="lazy">
-      <div class="loc-body">
-        ${loc.tag ? `<div class="loc-tag">${esc(loc.tag)}</div>` : ''}
-        <div class="loc-addr">${esc(loc.address)}</div>
-        <div class="loc-city">${esc(loc.city)}</div>
-        ${loc.storeType ? `<div style="font-size:13px;color:#e8197c;font-weight:500;margin-bottom:0.75rem;">${esc(loc.storeType)}</div>` : ''}
-        <div class="loc-phone">${icon('phone','lucide-16')}<a href="tel:${esc(loc.phone.replace(/\D/g,''))}">${esc(loc.phone)}</a></div>
-        <div class="loc-hours">${icon('clock','lucide-14')}<div class="loc-hours-list">${loc.hours.map(esc).join('<br>')}</div></div>
-        <div class="loc-map-wrap"><iframe class="loc-map-iframe" src="${esc(buildMapEmbed(loc))}" title="Map of ${esc(loc.address)}" loading="lazy"></iframe></div>
-        <a class="loc-map" href="${esc(loc.mapsUrl)}" target="_blank" rel="noopener">${icon('map','lucide-14')}Get directions</a>
-      </div>
-    </div>`).join('');
-
-  // ── STAMPS ─────────────────────────────────────────────────
-  $('stamps-body').textContent = SITE.stamps.body;
-  $('stamp-reward-icon').innerHTML = icon('gift','lucide-20');
-  $('stamp-reward-big').textContent = SITE.stamps.rewardAmount;
-  $('stamp-reward-label').textContent = SITE.stamps.rewardDetail;
-  $('stamp-img').src = SITE.stamps.cardImage;
-
-  // ── COMMUNITY ──────────────────────────────────────────────
-  $('comm-text').innerHTML = SITE.community.body.map(p => `<p>${esc(p)}</p>`).join('') +
-    (SITE.community.donationItems ? `
-      <div style="margin-top:1.25rem;background:#fff;border-radius:12px;padding:1.25rem 1.5rem;border:1px solid #f0c0d8;">
-        <div style="font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#c4155e;margin-bottom:0.75rem;">We're always looking for</div>
-        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:0.4rem;">
-          ${SITE.community.donationItems.map(item => `<li style="background:#fbeaf0;color:#c4155e;font-size:12px;padding:4px 12px;border-radius:99px;border:0.5px solid #f0c0d8;">${esc(item)}</li>`).join('')}
-        </ul>
-      </div>` : '');
-  $('comm-stats').innerHTML = SITE.community.stats.map(s => `
-    <div class="c-stat">
-      <div class="c-stat-num">${esc(s.num)}</div>
-      <div class="c-stat-label">${esc(s.label)}</div>
-    </div>`).join('');
-
-  // ── FOOTER ─────────────────────────────────────────────────
-  $('footer-brand').textContent = 'Nifty Thrifty';
-  $('footer-tagline').textContent = SITE.tagline.split('·')[0].trim() + ", Wilmington's favorite thrift bin store. Two locations, daily restocks, and finds you won't believe.";
-  SITE.locations.forEach((loc, i) => {
-    const col = $(`footer-loc-${i+1}`);
-    if (!col) return;
-    col.innerHTML += `
-      <div class="footer-loc-name">${esc(loc.address)}</div>
-      <div class="footer-loc-detail">
-        ${esc(loc.city)}<br>
-        <a href="tel:${esc(loc.phone.replace(/\D/g,''))}">${esc(loc.phone)}</a><br>
-        Mon–Fri 10am – 5:30pm<br>Sat &amp; Sun 10am – 5pm<br>
-        <a href="${esc(loc.mapsUrl)}" target="_blank" rel="noopener">Get directions</a>
-      </div>`;
-  });
-  $('footer-links').innerHTML = SITE.footerLinks.map(l =>
-    `<li><a href="${esc(l.anchor)}">${esc(l.label)}</a></li>`
-  ).join('') + `<li><a href="#stamps">Loyalty rewards</a></li>`;
-  $('footer-social').innerHTML = `
-    <a class="soc-btn" href="${esc(SITE.social.facebook)}" target="_blank" rel="noopener" aria-label="Facebook">${icon('facebook','lucide-16')}</a>
-    <a class="soc-btn" href="${esc(SITE.social.instagram)}" target="_blank" rel="noopener" aria-label="Instagram">${icon('instagram','lucide-16')}</a>`;
-  const yr = new Date().getFullYear();
-  $('footer-copy').textContent = `© ${yr} ${SITE.name} · ${SITE.locations.map(l=>l.address).join(' & ')} · Wilmington, NC`;
-  $('footer-mission-tag').innerHTML = `${icon('heart','lucide-14')} Benefiting the homeless community`;
-
-  // ── HAMBURGER ──────────────────────────────────────────────
-  const hamburger = $('hamburger');
-  const mobileMenu = $('mobile-menu');
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('open');
-    mobileMenu.classList.toggle('open');
-  });
-  function closeMobile() {
-    hamburger.classList.remove('open');
-    mobileMenu.classList.remove('open');
-  }
-
-  // ── SCROLL REVEAL ──────────────────────────────────────────
-  function setupScrollReveal() {
-    const revealTargets = [
-      '#deals .sec-label', '#deals .sec-title',
-      '#pricing .sec-label', '#pricing .sec-title',
-      '#pricing .photo-strip', '#pricing .pricing-cards',
-      '#bogo .sec-label', '#bogo .sec-title', '#bogo .bogo-sub',
-      '#events .sec-label', '#events .sec-title',
-      '#locations .sec-label', '#locations .sec-title',
-      '#stamps .sec-label', '#stamps .sec-title', '#stamps .stamps-inner',
-      '#community .sec-label', '#community .sec-title', '#community .comm-inner',
-    ];
-    revealTargets.forEach(sel =>
-      document.querySelectorAll(sel).forEach(el => el.classList.add('reveal'))
-    );
-    ['#week-grid', '#bogo-items', '#events-grid', '#loc-grid'].forEach(sel => {
-      const el = document.querySelector(sel);
-      if (el) el.classList.add('reveal-stagger');
-    });
-
-    const all = document.querySelectorAll('.reveal, .reveal-stagger');
-    all.forEach(el => {
-      if (el.getBoundingClientRect().top < window.innerHeight) {
-        el.classList.add('no-transition', 'revealed');
-        requestAnimationFrame(() => requestAnimationFrame(() => el.classList.remove('no-transition')));
-      }
-    });
-
-    if (!('IntersectionObserver' in window)) {
-      all.forEach(el => el.classList.add('revealed'));
-      return;
-    }
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) { entry.target.classList.add('revealed'); obs.unobserve(entry.target); }
-      });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.01 });
-    all.forEach(el => { if (!el.classList.contains('revealed')) obs.observe(el); });
-  }
-
-  requestAnimationFrame(() => setupScrollReveal());
-</script>
-</body>
-</html>
+};
