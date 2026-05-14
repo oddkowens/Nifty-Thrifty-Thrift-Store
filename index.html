@@ -564,12 +564,10 @@
 
   <!-- COMMUNITY -->
   <div class="sec community-sec" id="community">
+    <div class="sec-label">Our mission</div>
+    <div class="sec-title">Benefiting the homeless community</div>
     <div class="comm-inner">
-      <div class="comm-text">
-        <div class="sec-label">Our mission</div>
-        <div class="sec-title" style="margin-bottom:1.5rem;">Benefiting the homeless community</div>
-        <div id="comm-text"></div>
-      </div>
+      <div class="comm-text" id="comm-text"></div>
       <div class="comm-right">
         <div class="comm-stats" id="comm-stats"></div>
         <div id="comm-donation-card"></div>
@@ -617,7 +615,7 @@ const SITE = {
   tagline: "Benefiting the homeless community · Wilmington, NC",
   heroEyebrow: "Wilmington's favorite thrift bin store",
   heroHeadline: ["Thrift more.", "Spend less."],
-  heroBody: "Helping our neighbors in need — two Wilmington locations packed with daily new arrivals, weekly deals, and finds you won't believe.",
+  heroBody: "Helping our neighbors in need, two Wilmington locations packed with daily new arrivals, weekly deals, and finds you won't believe.",
 
   // ----------------------------------------------------------
   // ANNOUNCEMENT BAR FALLBACK
@@ -639,10 +637,10 @@ const SITE = {
   // WEEKLY SCHEDULE
   // ----------------------------------------------------------
   weeklySchedule: [
-    { day: "Mon", promo: "Mega Monday",    desc: "Big restock at Market St — new items hit the floor",  hot: true  },
+    { day: "Mon", promo: "Mega Monday",    desc: "Big restock at Market St, new items hit the floor",    hot: true  },
     { day: "Tue", promo: "New arrivals",   desc: "Fresh finds added all day at both locations",          hot: false },
     { day: "Wed", promo: "New arrivals",   desc: "Fresh finds added all day at both locations",          hot: false },
-    { day: "Thu", promo: "Double Stamps",  desc: "2 stamps per $10 spent — both locations",             hot: true  },
+    { day: "Thu", promo: "Double Stamps",  desc: "2 stamps per $10 spent, both locations",               hot: true  },
     { day: "Fri", promo: "New arrivals",   desc: "Fresh finds added all day at both locations",          hot: false },
     { day: "Sat", promo: "Weekend deal",   desc: "$1/lb at Market St · BOGO free all day at CB",        hot: true  },
     { day: "Sun", promo: "Fill-A-Bag",     desc: "3–5pm Market St, fill any bag $10 · $1/lb all day",   hot: true  },
@@ -667,7 +665,7 @@ const SITE = {
       title: "Carolina Beach Rd · Rack Pricing",
       rows: [
         { days: "All clothing",                   price: "From $1"   },
-        { days: "All clothing — every day",       price: "BOGO free" },
+        { days: "All clothing, every day",           price: "BOGO free" },
         { days: "Women's $1 rack (Sat & Sun)",    price: "B1G3 free" },
       ]
     },
@@ -744,7 +742,7 @@ const SITE = {
   // STAMPS / LOYALTY
   // ----------------------------------------------------------
   stamps: {
-    body: "Get a stamp for every $10 you spend — at either location. Collect 10 stamps and earn $10 off your next purchase. On Thursdays, earn double stamps. Stamps are interchangeable between both locations.",
+    body: "Get a stamp for every $10 you spend, at either location. Collect 10 stamps and earn $10 off your next purchase. On Thursdays, earn double stamps. Stamps are interchangeable between both locations.",
     rewardAmount: "$10 off",
     rewardDetail: "when you collect 10 stamps",
     cardImage: "https://i.ibb.co/VWXtq64s/Nifty-Stamps.png",
@@ -755,8 +753,8 @@ const SITE = {
   // ----------------------------------------------------------
   community: {
     body: [
-      "Our mission is to help our neighbors in need. Our heart lies with the Good Shepherd Center — guests receive vouchers so that as they begin a new chapter, they can come into either store for whatever they need to make their place feel like home.",
-      "Beyond the Good Shepherd, we help anyone who comes through our doors — families who've lost everything in a fire, someone who just needs a fresh set of clothes. We do what we can, every single day.",
+      "Our mission is to help our neighbors in need. Our heart lies with the Good Shepherd Center. Guests receive vouchers so that as they begin a new chapter, they can come into either store for whatever they need to make their place feel like home.",
+      "Beyond the Good Shepherd, we help anyone who comes through our doors: families who've lost everything in a fire, someone who just needs a fresh set of clothes. We do what we can, every single day.",
       "We accept donations at both locations during store hours. Every item donated stays right here in Wilmington and goes toward helping someone who needs it most.",
     ],
     donationItems: [
@@ -807,7 +805,7 @@ const SITE = {
   // PHOTO STRIP (inside-the-store section)
   // ----------------------------------------------------------
   photoStrip: [
-    { src: "images/strip-1.jpg", alt: "Inside Nifty Thrifty — colorful clothing racks" },
+    { src: "images/strip-1.jpg", alt: "Inside Nifty Thrifty, colorful clothing racks" },
     { src: "images/strip-2.jpg", alt: "Clothing rack and shoe wall at Nifty Thrifty" },
   ],
 
@@ -1004,7 +1002,7 @@ const SITE = {
 
   const galleryImages = Array.from({ length: 12 }, (_, i) => ({
     src: `images/gallery-${i + 1}.jpg`,
-    alt: `Nifty Thrifty — photo ${i + 1}`,
+    alt: `Nifty Thrifty photo ${i + 1}`,
   }));
 
   $('gallery-grid').innerHTML = galleryImages.map((img, i) => `
