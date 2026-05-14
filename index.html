@@ -167,15 +167,23 @@
 
     /* HERO */
     .hero { position: relative; height: 720px; overflow: hidden; }
-    .hero-img { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; display: block; }
+    .hero-slides { width: 100%; height: 100%; position: relative; }
+    .hero-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.2s ease-in-out; }
+    .hero-slide.active { opacity: 1; }
+    .hero-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-slide:nth-child(1) .hero-img { object-position: center 45%; }
+    .hero-slide:nth-child(2) .hero-img { object-position: center 30%; }
     .hero-overlay { position: absolute; inset: 0; background: linear-gradient(105deg, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.62) 40%, rgba(0,0,0,0.35) 70%, rgba(0,0,0,0.45) 100%); }
-    .hero-content { position: absolute; inset: 0; display: flex; align-items: center; padding: 0 calc(max(1.5rem, 50% - 600px)); }
+    .hero-content { position: absolute; inset: 0; display: flex; align-items: center; padding: 0 calc(max(1.5rem, 50% - 600px)); z-index: 2; }
     .hero-text { max-width: 580px; }
-    .hero-eyebrow { font-size: 12px; letter-spacing: 3.5px; text-transform: uppercase; color: #e8197c; margin-bottom: 1.5rem; font-weight: 600; }
+    .hero-eyebrow { font-size: 12px; letter-spacing: 3.5px; text-transform: uppercase; color: #fff; margin-bottom: 1.5rem; font-weight: 600; padding-left: 10px; border-left: 3px solid #e8197c; }
     .hero-h1 { font-family: 'Playfair Display', serif; font-size: 78px; font-weight: 800; color: #fff; line-height: 1.02; margin-bottom: 1.5rem; letter-spacing: -0.02em; }
     .hero-h1 em { font-style: italic; font-weight: 700; color: #e8197c; }
     .hero-tagline { font-size: 17px; color: rgba(255,255,255,0.82); line-height: 1.6; margin-bottom: 2.25rem; max-width: 460px; font-weight: 400; }
     .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero-dots { position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 2; }
+    .hero-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.4); border: none; cursor: pointer; padding: 0; transition: background 0.3s, transform 0.3s; }
+    .hero-dot.active { background: #e8197c; transform: scale(1.2); }
 
     /* BUTTONS */
     .btn-pink { background: #e8197c; color: #fff; border: none; padding: 11px 24px; border-radius: 8px; font-size: 13px; cursor: pointer; font-family: 'Inter', sans-serif; box-shadow: 0 2px 10px rgba(232,25,124,0.35); text-decoration: none; display: inline-block; transition: background 0.2s, transform 0.1s; }
@@ -252,12 +260,33 @@
     .pill-row { display: flex; flex-wrap: wrap; gap: 6px; }
     .pill { font-size: 12px; background: #f5f5f5; color: #555; padding: 4px 11px; border-radius: 99px; border: 0.5px solid #e8e8e8; }
 
-    /* LOCATIONS */
+    /* GALLERY */
+    .gallery-sec { background: #111; }
+    .gallery-sec .sec-title { color: #fff; }
+    .gallery-sec .sec-label { color: #f06aab; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 240px; gap: 10px; grid-auto-flow: dense; }
+    .gallery-item { overflow: hidden; border-radius: 12px; position: relative; cursor: pointer; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+    .gallery-item:hover img { transform: scale(1.04); }
+    .gallery-item.feature  { grid-column: span 2; grid-row: span 2; }
+    .gallery-item.wide     { grid-column: span 2; }
+    .gallery-item.tall     { grid-row: span 2; }
+
+    /* LIGHTBOX */
+    .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 999; align-items: center; justify-content: center; padding: 1rem; }
+    .lightbox.open { display: flex; }
+    .lightbox-img { max-width: 90vw; max-height: 88vh; object-fit: contain; border-radius: 8px; display: block; }
+    .lightbox-close { position: absolute; top: 1.25rem; right: 1.5rem; background: none; border: none; color: #fff; font-size: 32px; cursor: pointer; line-height: 1; opacity: 0.7; transition: opacity 0.2s; }
+    .lightbox-close:hover { opacity: 1; }
+    .lightbox-prev, .lightbox-next { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; width: 44px; height: 44px; border-radius: 50%; cursor: pointer; font-size: 20px; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+    .lightbox-prev:hover, .lightbox-next:hover { background: #e8197c; border-color: #e8197c; }
+    .lightbox-prev { left: 1rem; }
+    .lightbox-next { right: 1rem; }
+    .lightbox-counter { position: absolute; bottom: 1.25rem; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.5); font-size: 13px; }
     .loc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
     .loc-card { background: #fff; border: 1px solid #efefef; border-radius: 16px; overflow: hidden; box-shadow: 0 6px 24px rgba(0,0,0,0.08); }
     .loc-img { width: 100%; height: 220px; object-fit: cover; object-position: center; display: block; }
     .loc-body { padding: 1.6rem; }
-    .loc-tag { display: inline-block; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; background: #111; color: #e8197c; padding: 4px 12px; border-radius: 6px; margin-bottom: 0.85rem; }
     .loc-addr { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; color: #111; margin-bottom: 0.4rem; letter-spacing: -0.01em; }
     .loc-city { font-size: 14px; color: #999; margin-bottom: 0.5rem; }
     .loc-phone { font-size: 15px; color: #444; font-weight: 500; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; }
@@ -275,15 +304,16 @@
     /* STAMPS */
     .stamps-sec { background: #111; color: #fff; }
     .stamps-sec .sec-title { color: #fff; }
+    .stamps-title { font-size: 42px; }
     .stamps-inner { display: flex; gap: 2.5rem; align-items: center; flex-wrap: wrap; }
-    .stamps-text { flex: 1; min-width: 200px; }
+    .stamps-text { flex: 1; min-width: 200px; display: flex; flex-direction: column; justify-content: center; }
     .stamps-text p { color: #aaa; font-size: 15px; line-height: 1.8; }
     .stamp-reward { margin-top: 1rem; background: #1a1a1a; border-radius: 14px; padding: 1.1rem 1.5rem; display: flex; align-items: center; gap: 1.1rem; box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
     .stamp-reward-icon { width: 48px; height: 48px; border-radius: 50%; background: rgba(232,25,124,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #e8197c; }
     .stamp-reward-text { display: flex; align-items: baseline; gap: 0.85rem; flex-wrap: wrap; }
     .stamp-reward-big { font-family: 'Playfair Display', serif; font-size: 44px; font-weight: 800; color: #e8197c; line-height: 1; letter-spacing: -0.02em; }
     .stamp-reward-label { font-size: 13px; color: #888; line-height: 1.5; }
-    .stamp-img { width: 260px; border-radius: 14px; display: block; box-shadow: 0 8px 28px rgba(0,0,0,0.5); flex-shrink: 0; }
+    .stamp-img { width: 360px; border-radius: 14px; display: block; box-shadow: 0 8px 28px rgba(0,0,0,0.5); flex-shrink: 0; }
 
     /* COMMUNITY */
     .community-sec { background: #fbeaf0; }
@@ -323,11 +353,12 @@
       .nav-links { display: none; }
       .nav-hamburger { display: flex; }
       .hero { height: 540px; }
+      .hero-dots { bottom: 1rem; }
       .hero-content { padding: 0 1.5rem; }
       .hero-h1 { font-size: 48px; }
       .hero-tagline { font-size: 15px; }
-      .ribbon { flex-direction: column; gap: 0.25rem; text-align: left; }
-      .ribbon-right { text-align: left; justify-content: flex-start; }
+      .ribbon { flex-direction: column; gap: 0.75rem; text-align: left; }
+      .ribbon-right { text-align: left; justify-content: flex-start; align-self: flex-start; }
       .sec { padding: 3rem 1.25rem; }
       .sec-title { font-size: 32px; margin-bottom: 1.75rem; }
       .week-grid { grid-template-columns: repeat(3, 1fr); }
@@ -339,8 +370,12 @@
       .price-card { padding: 1.5rem 1.5rem 1rem; }
       .bogo-grid { grid-template-columns: repeat(2, 1fr); }
       .bogo-sub { font-size: 14px; margin-bottom: 2rem; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 180px; }
+      .gallery-item.feature { grid-column: span 2; grid-row: span 2; }
+      .gallery-item.wide { grid-column: span 2; }
+      .gallery-item.tall { grid-row: span 2; }
       .stamps-inner { flex-direction: column; }
-      .stamp-img { width: 100%; }
+      .stamp-img { width: 100%; max-width: 360px; }
       .comm-inner { flex-direction: column; }
       .comm-stats { justify-content: center; }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
@@ -356,7 +391,7 @@
     }
 
     /* Scroll margin */
-    #deals, #pricing, #bogo, #events, #locations, #stamps, #community, #contact {
+    #deals, #pricing, #bogo, #events, #gallery, #locations, #stamps, #community, #contact {
       scroll-margin-top: 80px;
     }
 
@@ -422,8 +457,16 @@
 
   <!-- HERO -->
   <div class="hero">
-    <img class="hero-img" src="images/hero.jpg" alt="Nifty Thrifty store interior" fetchpriority="high">
-    <div class="hero-overlay"></div>
+    <div class="hero-slides">
+      <div class="hero-slide active">
+        <img class="hero-img" src="images/hero-1.jpg" alt="Nifty Thrifty Thrift Shop exterior" fetchpriority="high">
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="hero-slide">
+        <img class="hero-img" src="images/hero-2.jpg" alt="Customers shopping the bins at Nifty Thrifty" loading="lazy">
+        <div class="hero-overlay"></div>
+      </div>
+    </div>
     <div class="hero-content">
       <div class="hero-text">
         <div class="hero-eyebrow" id="hero-eyebrow"></div>
@@ -434,6 +477,10 @@
           <a href="#locations" class="btn-white">Find a location</a>
         </div>
       </div>
+    </div>
+    <div class="hero-dots">
+      <button class="hero-dot active" aria-label="Slide 1"></button>
+      <button class="hero-dot" aria-label="Slide 2"></button>
     </div>
   </div>
 
@@ -452,8 +499,8 @@
     <div class="sec-label">Inside the store</div>
     <div class="sec-title">Something for everyone</div>
     <div class="photo-strip" id="photo-strip"></div>
-    <div class="sec-label" style="margin-top:4rem;">Bin & rack pricing</div>
-    <div class="sec-title">Two stores. <em>Both amazing.</em></div>
+    <div class="sec-label" style="margin-top:4rem;">Bin pricing</div>
+    <div class="sec-title">Always clear. <em>Always fair.</em></div>
     <div class="pricing-cards" id="pricing-cards"></div>
   </div>
 
@@ -472,6 +519,22 @@
     <div class="events-grid" id="events-grid"></div>
   </div>
 
+  <!-- GALLERY -->
+  <div class="sec gallery-sec" id="gallery">
+    <div class="sec-label">Inside Nifty Thrifty</div>
+    <div class="sec-title">See it for yourself</div>
+    <div class="gallery-grid" id="gallery-grid"></div>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close">&#x2715;</button>
+    <button class="lightbox-prev" id="lightbox-prev" aria-label="Previous">&#8592;</button>
+    <img class="lightbox-img" id="lightbox-img" src="" alt="">
+    <button class="lightbox-next" id="lightbox-next" aria-label="Next">&#8594;</button>
+    <div class="lightbox-counter" id="lightbox-counter"></div>
+  </div>
+
   <!-- LOCATIONS -->
   <div class="sec sec-alt" id="locations">
     <div class="sec-label">Find us</div>
@@ -481,10 +544,10 @@
 
   <!-- STAMPS -->
   <div class="sec stamps-sec" id="stamps">
-    <div class="sec-label">Loyalty rewards</div>
-    <div class="sec-title">Earn stamps. <em>Save more.</em></div>
     <div class="stamps-inner">
       <div class="stamps-text">
+        <div class="sec-label">Loyalty rewards</div>
+        <div class="sec-title stamps-title">Earn stamps. <em>Save more.</em></div>
         <p id="stamps-body"></p>
         <div class="stamp-reward">
           <div class="stamp-reward-icon" id="stamp-reward-icon"></div>
@@ -574,8 +637,8 @@
   const announcements = [
     { days: [1], html: `${icon('sparkles','lucide-14')} <strong>Mega Monday</strong> &nbsp;·&nbsp; Big restock at Market St right now &nbsp;·&nbsp; New arrivals all day at Carolina Beach Rd too` },
     { days: [4], html: `${icon('star','lucide-14')} <strong>Double Stamp Thursday</strong> &nbsp;·&nbsp; Earn 2 stamps per $10 spent, today only, both locations` },
-    { days: [6], html: `${icon('tag','lucide-14')} <strong>$1/lb Weekend at Market St</strong> &nbsp;·&nbsp; Clothing &amp; linens just $1 per pound &nbsp;·&nbsp; All clothing BOGO free all day at Carolina Beach Rd` },
-    { days: [0], html: `${icon('shopping-bag','lucide-14')} <strong>Fill-A-Bag Sunday</strong> &nbsp;·&nbsp; 3–5pm at Market St, stuff any bag for just $10 &nbsp;·&nbsp; $1/lb all day at Market St &nbsp;·&nbsp; BOGO free all day at Carolina Beach Rd` },
+    { days: [6], html: `${icon('tag','lucide-14')} <strong>$1/lb Weekend at Market St</strong> &nbsp;·&nbsp; Clothing &amp; linens just $1/lb all day &nbsp;·&nbsp; All clothing BOGO free all day at Carolina Beach Rd` },
+    { days: [0], html: `${icon('shopping-bag','lucide-14')} <strong>Fill-A-Bag Sunday</strong> &nbsp;·&nbsp; 3–5pm at Market St, fill any bag for $10 &nbsp;·&nbsp; $1/lb all day at Market St &nbsp;·&nbsp; BOGO free all day at Carolina Beach Rd` },
     { days: [],  html: SITE.announcement || `${icon('map-pin','lucide-14')} <strong>Two Wilmington locations</strong> &nbsp;·&nbsp; Market St &amp; Carolina Beach Rd &nbsp;·&nbsp; Double stamps every Thursday` },
   ];
 
@@ -612,36 +675,52 @@
   ).join('');
   $('hero-tagline').textContent = SITE.heroBody;
 
+  // ── HERO SLIDESHOW ─────────────────────────────────────────
+  (function () {
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots   = document.querySelectorAll('.hero-dot');
+    if (slides.length < 2) return;
+    let current = 0;
+    let timer   = null;
+    const DELAY = 7000;
+
+    function goTo(n) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = (n + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+    }
+    function start() { timer = setInterval(() => goTo(current + 1), DELAY); }
+    function reset() { clearInterval(timer); start(); }
+
+    dots.forEach((dot, i) => dot.addEventListener('click', () => { goTo(i); reset(); }));
+
+    const hero = document.querySelector('.hero');
+    hero.addEventListener('mouseenter', () => clearInterval(timer));
+    hero.addEventListener('mouseleave', start);
+
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) start();
+  })();
+
   // ── RIBBON ─────────────────────────────────────────────────
-  // Computes the next open/close moment based on standard hours:
-  //   Mon–Fri 10am–5:30pm, Sat–Sun 10am–5pm
   function getHoursStatus() {
     const now = new Date();
-    const day = now.getDay(); // 0=Sun ... 6=Sat
+    const day = now.getDay();
     const minutes = now.getHours() * 60 + now.getMinutes();
     const isWeekend = day === 0 || day === 6;
-    const openMin  = 10 * 60;                  // 10:00
-    const closeMin = isWeekend ? 17 * 60 : 17 * 60 + 30; // 5:00 or 5:30
+    const openMin  = 10 * 60;
+    const closeMin = isWeekend ? 17 * 60 : 17 * 60 + 30;
     const fmt = (mins) => {
-      const h = Math.floor(mins / 60);
-      const m = mins % 60;
+      const h = Math.floor(mins / 60), m = mins % 60;
       const period = h >= 12 ? 'pm' : 'am';
       const hr = ((h + 11) % 12) + 1;
       return m === 0 ? `${hr}${period}` : `${hr}:${String(m).padStart(2,'0')}${period}`;
     };
-    if (minutes < openMin) {
-      return `Open today at ${fmt(openMin)}`;
-    }
-    if (minutes < closeMin) {
-      return `Open until ${fmt(closeMin)} today`;
-    }
-    // Closed for the day — next open is tomorrow
-    const tomorrowIsWeekend = ((day + 1) % 7) === 0 || ((day + 1) % 7) === 6;
-    const tomorrowOpen = 10 * 60;
-    const tomorrowLabel = ((day + 1) % 7) === 1 ? 'Monday' :
-                          ((day + 1) % 7) === 0 ? 'Sunday' :
-                          'tomorrow';
-    return `Opens ${fmt(tomorrowOpen)} ${tomorrowLabel}`;
+    if (minutes < openMin)  return `Open today at ${fmt(openMin)}`;
+    if (minutes < closeMin) return `Open until ${fmt(closeMin)} today`;
+    const tomorrowLabel = ((day + 1) % 7) === 1 ? 'Monday' : ((day + 1) % 7) === 0 ? 'Sunday' : 'tomorrow';
+    return `Opens ${fmt(10 * 60)} ${tomorrowLabel}`;
   }
 
   if (SITE.ribbon?.show) {
@@ -673,7 +752,6 @@
 
   // ── PRICING ────────────────────────────────────────────────
   function formatPrice(p) { return esc(p).replace(/(\$[\d.]+)/, '<em>$1</em>'); }
-
   $('pricing-cards').innerHTML = SITE.pricingCategories.map(cat => `
     <div class="price-card">
       <div class="price-card-head">
@@ -693,7 +771,70 @@
       <div class="bogo-label">${esc(item.label)}</div>
     </div>`).join('');
 
-  // ── EVENTS ─────────────────────────────────────────────────
+  // ── GALLERY ────────────────────────────────────────────────
+  // Layout map: defines the size class for each of the 12 slots.
+  // 'feature' = 2 cols × 2 rows, 'wide' = 2 cols × 1 row,
+  // 'tall' = 1 col × 2 rows, '' = 1×1 standard cell.
+  const galleryLayout = [
+    'feature', 'tall',  '',      '',
+    '',        '',      'wide',
+    'tall',    'wide',
+    '',        '',      'wide',
+  ];
+
+  const galleryImages = Array.from({ length: 12 }, (_, i) => ({
+    src: `images/gallery-${i + 1}.jpg`,
+    alt: `Nifty Thrifty — photo ${i + 1}`,
+  }));
+
+  $('gallery-grid').innerHTML = galleryImages.map((img, i) => `
+    <div class="gallery-item${galleryLayout[i] ? ' ' + galleryLayout[i] : ''}"
+         data-index="${i}" role="button" tabindex="0"
+         aria-label="View photo ${i + 1}">
+      <img src="${esc(img.src)}" alt="${esc(img.alt)}" loading="lazy">
+    </div>`).join('');
+
+  // ── LIGHTBOX ───────────────────────────────────────────────
+  let lbIndex = 0;
+  const lightbox   = $('lightbox');
+  const lbImg      = $('lightbox-img');
+  const lbCounter  = $('lightbox-counter');
+
+  function openLightbox(i) {
+    lbIndex = i;
+    lbImg.src = galleryImages[i].src;
+    lbImg.alt = galleryImages[i].alt;
+    lbCounter.textContent = `${i + 1} / ${galleryImages.length}`;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function prevImage() { openLightbox((lbIndex - 1 + galleryImages.length) % galleryImages.length); }
+  function nextImage() { openLightbox((lbIndex + 1) % galleryImages.length); }
+
+  // Click gallery items
+  document.querySelectorAll('.gallery-item').forEach(el => {
+    el.addEventListener('click', () => openLightbox(+el.dataset.index));
+    el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') openLightbox(+el.dataset.index); });
+  });
+
+  $('lightbox-close').addEventListener('click', closeLightbox);
+  $('lightbox-prev').addEventListener('click', prevImage);
+  $('lightbox-next').addEventListener('click', nextImage);
+
+  // Click outside image to close
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', e => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape')      closeLightbox();
+    if (e.key === 'ArrowLeft')   prevImage();
+    if (e.key === 'ArrowRight')  nextImage();
+  });
   const today_date = new Date(); today_date.setHours(0,0,0,0);
   const activeEvents = SITE.events.filter(e => {
     if (!e.endDate) return true;
@@ -724,7 +865,7 @@
     <div class="loc-card">
       <img class="loc-img" src="${esc(loc.image)}" alt="${esc(loc.imageAlt)}" loading="lazy">
       <div class="loc-body">
-        ${loc.tag ? `<div class="loc-tag">${esc(loc.tag)}</div>` : ''}
+        ${loc.tag ? `<div style="display:inline-block;font-size:10px;letter-spacing:2px;text-transform:uppercase;background:#111;color:#e8197c;padding:4px 12px;border-radius:6px;margin-bottom:0.85rem;">${esc(loc.tag)}</div>` : ''}
         <div class="loc-addr">${esc(loc.address)}</div>
         <div class="loc-city">${esc(loc.city)}</div>
         ${loc.storeType ? `<div style="font-size:13px;color:#e8197c;font-weight:500;margin-bottom:0.75rem;">${esc(loc.storeType)}</div>` : ''}
@@ -746,7 +887,7 @@
   $('comm-text').innerHTML = SITE.community.body.map(p => `<p>${esc(p)}</p>`).join('') +
     (SITE.community.donationItems ? `
       <div style="margin-top:1.25rem;background:#fff;border-radius:12px;padding:1.25rem 1.5rem;border:1px solid #f0c0d8;">
-        <div style="font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#c4155e;margin-bottom:0.75rem;">We're always looking for</div>
+        <div style="font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#c4155e;margin-bottom:0.75rem;">We're always looking for donations</div>
         <ul style="list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:0.4rem;">
           ${SITE.community.donationItems.map(item => `<li style="background:#fbeaf0;color:#c4155e;font-size:12px;padding:4px 12px;border-radius:99px;border:0.5px solid #f0c0d8;">${esc(item)}</li>`).join('')}
         </ul>
@@ -802,6 +943,7 @@
       '#pricing .photo-strip', '#pricing .pricing-cards',
       '#bogo .sec-label', '#bogo .sec-title', '#bogo .bogo-sub',
       '#events .sec-label', '#events .sec-title',
+      '#gallery .sec-label', '#gallery .sec-title',
       '#locations .sec-label', '#locations .sec-title',
       '#stamps .sec-label', '#stamps .sec-title', '#stamps .stamps-inner',
       '#community .sec-label', '#community .sec-title', '#community .comm-inner',
@@ -809,11 +951,10 @@
     revealTargets.forEach(sel =>
       document.querySelectorAll(sel).forEach(el => el.classList.add('reveal'))
     );
-    ['#week-grid', '#bogo-items', '#events-grid', '#loc-grid'].forEach(sel => {
+    ['#week-grid', '#bogo-items', '#events-grid', '#gallery-grid', '#loc-grid'].forEach(sel => {
       const el = document.querySelector(sel);
       if (el) el.classList.add('reveal-stagger');
     });
-
     const all = document.querySelectorAll('.reveal, .reveal-stagger');
     all.forEach(el => {
       if (el.getBoundingClientRect().top < window.innerHeight) {
@@ -821,7 +962,6 @@
         requestAnimationFrame(() => requestAnimationFrame(() => el.classList.remove('no-transition')));
       }
     });
-
     if (!('IntersectionObserver' in window)) {
       all.forEach(el => el.classList.add('revealed'));
       return;
