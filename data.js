@@ -1,5 +1,5 @@
 // ============================================================
-//  NIFTY THRIFTY — Site Content v15
+//  NIFTY THRIFTY — Site Content v14
 //  Edit this file to update text, prices, hours, events, etc.
 //  No need to touch index.html for routine content changes.
 // ============================================================
@@ -48,7 +48,6 @@ const SITE = {
 
   // ----------------------------------------------------------
   // PRICING
-  // Two stores, two formats — Market St is bin/lb, CB is hanging garment
   // ----------------------------------------------------------
   pricingCategories: [
     {
@@ -65,16 +64,13 @@ const SITE = {
       icon: "shirt",
       title: "Carolina Beach Rd · Rack Pricing",
       rows: [
-        { days: "All clothing",                 price: "From $1"   },
-        { days: "All clothing — every day",     price: "BOGO free" },
-        { days: "Women's $1 rack (Sat & Sun)",  price: "B1G3 free" },
+        { days: "All clothing",                   price: "From $1"   },
+        { days: "All clothing — every day",       price: "BOGO free" },
+        { days: "Women's $1 rack (Sat & Sun)",    price: "B1G3 free" },
       ]
     },
   ],
 
-  // ----------------------------------------------------------
-  // BOGO — Carolina Beach Rd
-  // ----------------------------------------------------------
   bogoItems: [
     { label: "All Clothing",      icon: "shirt"      },
     { label: "Costume Jewelry",   icon: "gem"        },
@@ -85,6 +81,9 @@ const SITE = {
   // ----------------------------------------------------------
   // EVENTS — recurring weekly anchors
   // ----------------------------------------------------------
+  // These are the always-on reasons to visit. To add a one-time
+  // dated event, just add another object here. (Future enhancement:
+  // optional endDate field for auto-expiring dated events.)
   events: [
     {
       date: "Every Monday · 10am – 5:30pm",
@@ -118,25 +117,25 @@ const SITE = {
   locations: [
     {
       tag: "Bin Store",
-      image: "https://i.ibb.co/jZ306kpK/3e1f00232e970babcc1a327bf56867ca204af03f4bd2644f55ee724d7ea6b1a2.png",
-      imageAlt: "Nifty Thrifty Market St — bin store, Wilmington NC",
+      storeType: "Pay-by-the-pound bin store · Mega Monday restocks",
+      image: "images/location-market.jpg",
+      imageAlt: "Nifty Thrifty Market St location, Wilmington NC",
       address: "1614 Market St",
       city: "Wilmington, NC 28401",
       phone: "910.617.5031",
       hours: ["Mon–Fri: 10am – 5:30pm", "Sat: 10am – 5pm", "Sun: 10am – 5pm"],
-      mapsUrl: "https://maps.google.com/?q=1614+Market+St,+Wilmington,+NC+28401",
-      storeType: "Pay-by-the-pound bin store · Mega Monday restocks",
+      mapsUrl: "https://maps.google.com/?q=1614+Market+St,+Wilmington,+NC+28401"
     },
     {
       tag: "Rack Store",
-      image: "https://i.ibb.co/V0WtB9qm/a07a520df73334c65e8dd6bf5f970a517ed2c8b23856ecd27e654786a6ad8df9.png",
-      imageAlt: "Nifty Thrifty Carolina Beach Rd — rack store, Wilmington NC",
+      storeType: "Hanging garments from $1 · All clothing BOGO free every day",
+      image: "images/location-cbr.jpg",
+      imageAlt: "Nifty Thrifty Carolina Beach Rd location, Wilmington NC",
       address: "3722 Carolina Beach Rd",
       city: "Wilmington, NC 28412",
       phone: "910.769.5082",
       hours: ["Mon–Fri: 10am – 5:30pm", "Sat: 10am – 5pm", "Sun: 10am – 5pm"],
-      mapsUrl: "https://maps.google.com/?q=3722+Carolina+Beach+Rd,+Wilmington,+NC",
-      storeType: "Hanging garments from $1 · All clothing BOGO free every day",
+      mapsUrl: "https://maps.google.com/?q=3722+Carolina+Beach+Rd,+Wilmington,+NC"
     },
   ],
 
@@ -157,7 +156,7 @@ const SITE = {
     body: [
       "Our mission is to help our neighbors in need. Our heart lies with the Good Shepherd Center — guests receive vouchers so that as they begin a new chapter, they can come into either store for whatever they need to make their place feel like home.",
       "Beyond the Good Shepherd, we help anyone who comes through our doors — families who've lost everything in a fire, someone who just needs a fresh set of clothes. We do what we can, every single day.",
-      "We also accept donations at both locations during store hours. Every item donated stays right here in Wilmington and goes toward helping someone who needs it most.",
+      "We accept donations at both locations during store hours. Every item donated stays right here in Wilmington and goes toward helping someone who needs it most.",
     ],
     donationItems: [
       "Clothing (all sizes)",
@@ -196,8 +195,8 @@ const SITE = {
   // PHOTO STRIP (inside-the-store section)
   // ----------------------------------------------------------
   photoStrip: [
-    { src: "https://i.ibb.co/3ydNpFQ4/nifty-shoes.jpg",         alt: "Shoes and accessories wall" },
-    { src: "https://i.ibb.co/YTX5mZmc/Interior-with-bins.jpg",  alt: "Store interior with bins"   },
+    { src: "images/strip-1.jpg", alt: "Inside Nifty Thrifty — colorful clothing racks" },
+    { src: "images/strip-2.jpg", alt: "Clothing rack and shoe wall at Nifty Thrifty" },
   ],
 
 };
