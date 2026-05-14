@@ -499,7 +499,6 @@
     <div class="sec-label">Inside the store</div>
     <div class="sec-title">Something for everyone</div>
     <div class="photo-strip" id="photo-strip"></div>
-    <div class="sec-label" style="margin-top:4rem;">Bin pricing</div>
     <div class="sec-title">Always clear. <em>Always fair.</em></div>
     <div class="pricing-cards" id="pricing-cards"></div>
   </div>
@@ -865,7 +864,7 @@
     <div class="loc-card">
       <img class="loc-img" src="${esc(loc.image)}" alt="${esc(loc.imageAlt)}" loading="lazy">
       <div class="loc-body">
-        ${loc.tag ? `<div style="display:inline-block;font-size:10px;letter-spacing:2px;text-transform:uppercase;background:#111;color:#e8197c;padding:4px 12px;border-radius:6px;margin-bottom:0.85rem;">${esc(loc.tag)}</div>` : ''}
+        ${loc.tag ? `<div style="display:inline-block;font-size:10px;letter-spacing:2px;text-transform:uppercase;background:#111;color:#fff;padding:4px 12px;border-radius:6px;margin-bottom:0.85rem;font-weight:600;">${esc(loc.tag)}</div>` : ''}
         <div class="loc-addr">${esc(loc.address)}</div>
         <div class="loc-city">${esc(loc.city)}</div>
         ${loc.storeType ? `<div style="font-size:13px;color:#e8197c;font-weight:500;margin-bottom:0.75rem;">${esc(loc.storeType)}</div>` : ''}
