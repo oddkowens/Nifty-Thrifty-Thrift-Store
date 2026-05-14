@@ -321,8 +321,8 @@
     .comm-text { flex: 1; min-width: 280px; }
     .comm-text p { font-size: 15px; color: #555; line-height: 1.8; }
     .comm-text p + p { margin-top: 0.75rem; }
-    .comm-right { flex: 1; min-width: 280px; display: flex; flex-direction: column; gap: 1.25rem; }
-    .comm-stats { display: flex; gap: 2.5rem; flex-shrink: 0; padding-top: 0.5rem; }
+    .comm-right { flex: 1; min-width: 280px; display: flex; flex-direction: column; gap: 1.5rem; }
+    .comm-stats { display: flex; gap: 2.5rem; padding-left: 0.25rem; }
     .c-stat { text-align: center; }
     .c-stat-num { font-family: 'Playfair Display', serif; font-size: 64px; font-weight: 800; color: #e8197c; line-height: 1; letter-spacing: -0.03em; }
     .c-stat-label { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1px; white-space: pre-line; }
@@ -564,13 +564,15 @@
 
   <!-- COMMUNITY -->
   <div class="sec community-sec" id="community">
-    <div class="sec-label">Our mission</div>
-    <div class="sec-title">Benefiting the homeless community</div>
     <div class="comm-inner">
-      <div class="comm-text" id="comm-text"></div>
+      <div class="comm-text">
+        <div class="sec-label">Our mission</div>
+        <div class="sec-title" style="margin-bottom:1.5rem;">Benefiting the homeless community</div>
+        <div id="comm-text"></div>
+      </div>
       <div class="comm-right">
-        <div id="comm-donation-card"></div>
         <div class="comm-stats" id="comm-stats"></div>
+        <div id="comm-donation-card"></div>
       </div>
     </div>
   </div>
@@ -1104,6 +1106,12 @@ const SITE = {
   // ── COMMUNITY ──────────────────────────────────────────────
   $('comm-text').innerHTML = SITE.community.body.map(p => `<p>${esc(p)}</p>`).join('');
 
+  $('comm-stats').innerHTML = SITE.community.stats.map(s => `
+    <div class="c-stat">
+      <div class="c-stat-num">${esc(s.num)}</div>
+      <div class="c-stat-label">${esc(s.label)}</div>
+    </div>`).join('');
+
   if (SITE.community.donationItems) {
     const dc = SITE.donationContact || {};
     const smsBody = encodeURIComponent("Hi! I have some items I'd like to donate.");
@@ -1125,12 +1133,6 @@ const SITE = {
         </div>
       </div>`;
   }
-
-  $('comm-stats').innerHTML = SITE.community.stats.map(s => `
-    <div class="c-stat">
-      <div class="c-stat-num">${esc(s.num)}</div>
-      <div class="c-stat-label">${esc(s.label)}</div>
-    </div>`).join('');
 
   // ── FOOTER ─────────────────────────────────────────────────
   $('footer-brand').textContent = 'Nifty Thrifty';
