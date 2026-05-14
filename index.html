@@ -317,11 +317,12 @@
 
     /* COMMUNITY */
     .community-sec { background: #fbeaf0; }
-    .comm-inner { display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; }
-    .comm-text { flex: 1; min-width: 200px; }
+    .comm-inner { display: flex; gap: 2.5rem; align-items: flex-start; flex-wrap: wrap; }
+    .comm-text { flex: 1; min-width: 280px; }
     .comm-text p { font-size: 15px; color: #555; line-height: 1.8; }
     .comm-text p + p { margin-top: 0.75rem; }
-    .comm-stats { display: flex; gap: 2.5rem; flex-shrink: 0; }
+    .comm-right { flex: 1; min-width: 280px; display: flex; flex-direction: column; gap: 1.25rem; }
+    .comm-stats { display: flex; gap: 2.5rem; flex-shrink: 0; padding-top: 0.5rem; }
     .c-stat { text-align: center; }
     .c-stat-num { font-family: 'Playfair Display', serif; font-size: 64px; font-weight: 800; color: #e8197c; line-height: 1; letter-spacing: -0.03em; }
     .c-stat-label { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1px; white-space: pre-line; }
@@ -377,6 +378,7 @@
       .stamps-inner { flex-direction: column; }
       .stamp-img { width: 100%; max-width: 360px; }
       .comm-inner { flex-direction: column; }
+      .comm-right { width: 100%; }
       .comm-stats { justify-content: center; }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
       .footer-bottom { flex-direction: column; align-items: flex-start; }
@@ -566,7 +568,10 @@
     <div class="sec-title">Benefiting the homeless community</div>
     <div class="comm-inner">
       <div class="comm-text" id="comm-text"></div>
-      <div class="comm-stats" id="comm-stats"></div>
+      <div class="comm-right">
+        <div class="comm-donation-card" id="comm-donation-card"></div>
+        <div class="comm-stats" id="comm-stats"></div>
+      </div>
     </div>
   </div>
 
@@ -883,14 +888,33 @@
   $('stamp-img').src = SITE.stamps.cardImage;
 
   // ── COMMUNITY ──────────────────────────────────────────────
-  $('comm-text').innerHTML = SITE.community.body.map(p => `<p>${esc(p)}</p>`).join('') +
-    (SITE.community.donationItems ? `
-      <div style="margin-top:1.25rem;background:#fff;border-radius:12px;padding:1.25rem 1.5rem;border:1px solid #f0c0d8;">
-        <div style="font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#c4155e;margin-bottom:0.75rem;">We're always looking for donations</div>
-        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:0.4rem;">
-          ${SITE.community.donationItems.map(item => `<li style="background:#fbeaf0;color:#c4155e;font-size:12px;padding:4px 12px;border-radius:99px;border:0.5px solid #f0c0d8;">${esc(item)}</li>`).join('')}
-        </ul>
-      </div>` : '');
+  $('comm-text').innerHTML = SITE.community.body.map(p => `<p>${esc(p)}</p>`).join('');
+
+  if (SITE.community.donationItems) {
+    const dc = SITE.donationContact || {};
+    const smsBody = encodeURIComponent("Hi! I have some items I'd like to donate.");
+    $('comm-donation-card').innerHTML = `
+      <div style="background:#fff;border:1px solid #efefef;border-radius:14px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.07);border-left:4px solid #e8197c;">
+        <div style="padding:1.5rem 1.5rem 0;">
+          <div style="font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#c4155e;margin-bottom:0.85rem;">We're always looking for donations</div>
+          <ul style="list-style:none;padding:0;margin:0 0 1.25rem;display:flex;flex-wrap:wrap;gap:0.4rem;">
+            ${SITE.community.donationItems.map(item => `<li style="background:#fbeaf0;color:#c4155e;font-size:12px;padding:4px 12px;border-radius:99px;border:0.5px solid #f0c0d8;">${esc(item)}</li>`).join('')}
+          </ul>
+        </div>
+        <div style="padding:1.25rem 1.5rem;background:#fafafa;border-top:1px solid #f0f0f0;">
+          <div style="font-size:13px;font-weight:600;color:#111;margin-bottom:0.75rem;">Got something to donate?</div>
+          <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+            ${dc.phone ? `<a href="sms:${esc(dc.phone)}?body=${smsBody}" style="display:inline-flex;align-items:center;gap:6px;background:#e8197c;color:#fff;font-size:13px;font-weight:500;padding:9px 16px;border-radius:8px;text-decoration:none;">
+              ${icon('phone','lucide-14')} Text us</a>` : ''}
+            ${dc.email ? `<a href="mailto:${esc(dc.email)}?subject=Donation%20Inquiry" style="display:inline-flex;align-items:center;gap:6px;background:#fff;color:#333;font-size:13px;font-weight:500;padding:9px 16px;border-radius:8px;text-decoration:none;border:1px solid #ddd;">
+              ${icon('map','lucide-14')} Email us</a>` : ''}
+            ${dc.facebookUrl ? `<a href="${esc(dc.facebookUrl)}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;background:#fff;color:#333;font-size:13px;font-weight:500;padding:9px 16px;border-radius:8px;text-decoration:none;border:1px solid #ddd;">
+              ${icon('facebook','lucide-14')} Message us</a>` : ''}
+          </div>
+        </div>
+      </div>`;
+  }
+
   $('comm-stats').innerHTML = SITE.community.stats.map(s => `
     <div class="c-stat">
       <div class="c-stat-num">${esc(s.num)}</div>
@@ -945,7 +969,7 @@
       '#gallery .sec-label', '#gallery .sec-title',
       '#locations .sec-label', '#locations .sec-title',
       '#stamps .sec-label', '#stamps .sec-title', '#stamps .stamps-inner',
-      '#community .sec-label', '#community .sec-title', '#community .comm-inner',
+      '#community .sec-label', '#community .sec-title', '#community .comm-inner', '#community .comm-donation-card',
     ];
     revealTargets.forEach(sel =>
       document.querySelectorAll(sel).forEach(el => el.classList.add('reveal'))
