@@ -776,13 +776,11 @@ const SITE = {
 
   // ----------------------------------------------------------
   // DONATION CONTACT
-  // Buttons in the "Got something to donate?" section
+  // Per-store contacts for the "Got something to donate?" section.
+  // phone pulled from SITE.locations automatically — just set the shared email here.
   // ----------------------------------------------------------
   donationContact: {
-    phone: "9106175031",           // digits only — used for the SMS/text link
-    phoneDisplay: "910.617.5031",
-    email: "niftythriftyilm@gmail.com",
-    facebookUrl: "https://www.facebook.com/Niftythriftyilm",
+    email: "Info@niftythriftyilm.com",
   },
 
   // ----------------------------------------------------------
@@ -1115,21 +1113,36 @@ const SITE = {
   if (SITE.community.donationItems) {
     const dc = SITE.donationContact || {};
     const smsBody = encodeURIComponent("Hi! I have some items I'd like to donate.");
+    // Pill list — shared across both store cards
+    const itemPills = SITE.community.donationItems.map(item =>
+      `<li style="background:#fbeaf0;color:#c4155e;font-size:12px;padding:4px 12px;border-radius:99px;border:0.5px solid #f0c0d8;">${esc(item)}</li>`
+    ).join('');
+    // One mini-card per location
+    const storeCards = SITE.locations.map(loc => {
+      const rawPhone = loc.phone.replace(/\D/g, '');
+      const emailSubject = encodeURIComponent(`Donation Inquiry – ${loc.address}`);
+      const emailHref = dc.email ? `mailto:${esc(dc.email)}?subject=${emailSubject}` : '';
+      return `
+        <div style="flex:1;min-width:220px;background:#fff;border:1px solid #efefef;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.06);border-left:4px solid #e8197c;">
+          <div style="padding:1.1rem 1.25rem 0.85rem;border-bottom:1px solid #f0f0f0;">
+            <div style="font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#c4155e;margin-bottom:0.25rem;">Donate here</div>
+            <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:#111;">${esc(loc.address)}</div>
+          </div>
+          <div style="padding:0.85rem 1.25rem;display:flex;flex-wrap:wrap;gap:0.5rem;">
+            <a href="sms:${rawPhone}?body=${smsBody}" style="display:inline-flex;align-items:center;gap:6px;background:#e8197c;color:#fff;font-size:13px;font-weight:500;padding:8px 15px;border-radius:8px;text-decoration:none;">${icon('phone','lucide-14')} Text us</a>
+            ${emailHref ? `<a href="${emailHref}" style="display:inline-flex;align-items:center;gap:6px;background:#fff;color:#333;font-size:13px;font-weight:500;padding:8px 15px;border-radius:8px;text-decoration:none;border:1px solid #ddd;">${icon('map','lucide-14')} Email us</a>` : ''}
+          </div>
+        </div>`;
+    }).join('');
     $('comm-donation-card').innerHTML = `
       <div style="background:#fff;border:1px solid #efefef;border-radius:14px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.07);border-left:4px solid #e8197c;">
         <div style="padding:1.5rem 1.5rem 0;">
           <div style="font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#c4155e;margin-bottom:0.85rem;">We're always looking for donations</div>
-          <ul style="list-style:none;padding:0;margin:0 0 1.25rem;display:flex;flex-wrap:wrap;gap:0.4rem;">
-            ${SITE.community.donationItems.map(item => `<li style="background:#fbeaf0;color:#c4155e;font-size:12px;padding:4px 12px;border-radius:99px;border:0.5px solid #f0c0d8;">${esc(item)}</li>`).join('')}
-          </ul>
+          <ul style="list-style:none;padding:0;margin:0 0 1.25rem;display:flex;flex-wrap:wrap;gap:0.4rem;">${itemPills}</ul>
         </div>
         <div style="padding:1.25rem 1.5rem;background:#fafafa;border-top:1px solid #f0f0f0;">
-          <div style="font-size:13px;font-weight:600;color:#111;margin-bottom:0.75rem;">Got something to donate?</div>
-          <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
-            ${dc.phone ? `<a href="sms:${esc(dc.phone)}?body=${smsBody}" style="display:inline-flex;align-items:center;gap:6px;background:#e8197c;color:#fff;font-size:13px;font-weight:500;padding:9px 16px;border-radius:8px;text-decoration:none;">${icon('phone','lucide-14')} Text us</a>` : ''}
-            ${dc.email ? `<a href="mailto:${esc(dc.email)}?subject=Donation%20Inquiry" style="display:inline-flex;align-items:center;gap:6px;background:#fff;color:#333;font-size:13px;font-weight:500;padding:9px 16px;border-radius:8px;text-decoration:none;border:1px solid #ddd;">${icon('map','lucide-14')} Email us</a>` : ''}
-            ${dc.facebookUrl ? `<a href="${esc(dc.facebookUrl)}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;background:#fff;color:#333;font-size:13px;font-weight:500;padding:9px 16px;border-radius:8px;text-decoration:none;border:1px solid #ddd;">${icon('facebook','lucide-14')} Message us</a>` : ''}
-          </div>
+          <div style="font-size:13px;font-weight:600;color:#111;margin-bottom:0.85rem;">Got something to donate? Contact the nearest location:</div>
+          <div style="display:flex;flex-wrap:wrap;gap:0.75rem;">${storeCards}</div>
         </div>
       </div>`;
   }
