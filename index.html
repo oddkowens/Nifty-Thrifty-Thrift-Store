@@ -775,12 +775,12 @@ const SITE = {
       "A portion of all proceeds goes directly toward helping our homeless neighbors. We also accept donations at either location during store hours.",
     ],
     donationItems: [
-      "Clothing (all sizes)",
+      "Clothing",
       "Shoes",
       "Linens & towels",
-      "Housewares & small appliances",
-      "Books, DVDs & games",
-      "Toys & children's items",
+      "Housewares",
+      "Books & media",
+      "Toys",
       "Jewelry & accessories",
     ],
     stats: [
@@ -1135,37 +1135,34 @@ const SITE = {
   if (SITE.community.donationItems) {
     const dc = SITE.donationContact || {};
     const smsBody = encodeURIComponent("Hi! I have some items I'd like to donate.");
-    // Pill list — shared across both store cards
+    // Neutral grey pills — matching the event-card pill style elsewhere on the page
     const itemPills = SITE.community.donationItems.map(item =>
-      `<li style="background:#fbeaf0;color:#c4155e;font-size:12px;padding:4px 12px;border-radius:99px;border:0.5px solid #f0c0d8;">${esc(item)}</li>`
+      `<li style="background:#f5f5f5;color:#555;font-size:12px;padding:5px 13px;border-radius:99px;border:0.5px solid #e8e8e8;">${esc(item)}</li>`
     ).join('');
-    // One mini-card per location
+    // One mini-card per location — uses the store's own tag (Bin Store / Rack Store)
     const storeCards = SITE.locations.map(loc => {
       const rawPhone = loc.phone.replace(/\D/g, '');
       const emailSubject = encodeURIComponent(`Donation Inquiry – ${loc.address}`);
       const emailHref = dc.email ? `mailto:${esc(dc.email)}?subject=${emailSubject}` : '';
       return `
         <div style="flex:1;min-width:220px;background:#fff;border:1px solid #efefef;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.06);">
-          <div style="padding:1.1rem 1.25rem 0.85rem;border-bottom:1px solid #f0f0f0;">
-            <div style="font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#c4155e;margin-bottom:0.25rem;">Donate here</div>
-            <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:#111;">${esc(loc.address)}</div>
+          <div style="padding:1.1rem 1.25rem 0.85rem;">
+            ${loc.tag ? `<div style="display:inline-block;font-size:10px;letter-spacing:2px;text-transform:uppercase;background:#111;color:#fff;padding:4px 11px;border-radius:6px;margin-bottom:0.6rem;font-weight:600;">${esc(loc.tag)}</div>` : ''}
+            <div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:#111;letter-spacing:-0.005em;">${esc(loc.address)}</div>
           </div>
-          <div style="padding:0.85rem 1.25rem;display:flex;flex-wrap:wrap;gap:0.5rem;">
+          <div style="padding:0 1.25rem 1.1rem;display:flex;flex-wrap:wrap;gap:0.5rem;">
             <a href="sms:${rawPhone}?body=${smsBody}" style="display:inline-flex;align-items:center;gap:6px;background:#e8197c;color:#fff;font-size:13px;font-weight:500;padding:8px 15px;border-radius:8px;text-decoration:none;">${icon('phone','lucide-14')} Text us</a>
             ${emailHref ? `<a href="${emailHref}" style="display:inline-flex;align-items:center;gap:6px;background:#fff;color:#333;font-size:13px;font-weight:500;padding:8px 15px;border-radius:8px;text-decoration:none;border:1px solid #ddd;">${icon('map','lucide-14')} Email us</a>` : ''}
           </div>
         </div>`;
     }).join('');
     $('comm-donation-card').innerHTML = `
-      <div style="background:#fff;border:1px solid #efefef;border-radius:14px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.07);border-left:4px solid #e8197c;">
-        <div style="padding:1.5rem 1.5rem 0;">
-          <div style="font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#c4155e;margin-bottom:0.85rem;">We're always looking for donations</div>
-          <ul style="list-style:none;padding:0;margin:0 0 1.25rem;display:flex;flex-wrap:wrap;gap:0.4rem;">${itemPills}</ul>
-        </div>
-        <div style="padding:1.25rem 1.5rem;background:#fafafa;border-top:1px solid #f0f0f0;">
-          <div style="font-size:13px;font-weight:600;color:#111;margin-bottom:0.85rem;">Got something to donate? Contact the nearest location:</div>
-          <div style="display:flex;flex-wrap:wrap;gap:0.75rem;">${storeCards}</div>
-        </div>
+      <div style="background:#fff;border:1px solid #efefef;border-radius:14px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.07);border-left:4px solid #e8197c;padding:1.75rem;">
+        <div style="display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#c4155e;margin-bottom:1rem;">${icon('gift','lucide-14')} We're always looking for donations</div>
+        <ul style="list-style:none;padding:0;margin:0 0 1.75rem;display:flex;flex-wrap:wrap;gap:0.4rem;">${itemPills}</ul>
+        <div style="height:1px;background:#f0f0f0;margin:0 0 1.5rem;"></div>
+        <div style="font-size:13px;font-weight:600;color:#111;margin-bottom:1rem;">Got something to donate? Contact the nearest location:</div>
+        <div style="display:flex;flex-wrap:wrap;gap:0.75rem;">${storeCards}</div>
       </div>`;
   }
 
