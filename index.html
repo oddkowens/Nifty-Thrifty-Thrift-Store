@@ -143,6 +143,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Only load the weights actually used: Playfair 700/800 upright + 700 italic; Inter 400/500/700 -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GDZFPFBM2V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GDZFPFBM2V');
+  </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -1209,12 +1218,12 @@ const SITE = {
   });
   $('footer-links').innerHTML = SITE.footerLinks.map(l =>
     `<li><a href="${esc(l.anchor)}">${esc(l.label)}</a></li>`
-  ).join('') + `<li><a href="#stamps">Loyalty rewards</a></li>`;
+  ).join('') + `<li><a href="#stamps">Loyalty rewards</a></li><li><a href="privacy.html">Privacy policy</a></li>`;
   $('footer-social').innerHTML = `
     <a class="soc-btn" href="${esc(SITE.social.facebook)}" target="_blank" rel="noopener" aria-label="Facebook">${icon('facebook','lucide-16')}</a>
     <a class="soc-btn" href="${esc(SITE.social.instagram)}" target="_blank" rel="noopener" aria-label="Instagram">${icon('instagram','lucide-16')}</a>`;
   const yr = new Date().getFullYear();
-  $('footer-copy').textContent = `© ${yr} ${SITE.name} · ${SITE.locations.map(l=>l.address).join(' & ')} · Wilmington, NC`;
+  $('footer-copy').innerHTML = `© ${yr} ${SITE.name} · ${SITE.locations.map(l=>l.address).join(' & ')} · Wilmington, NC &nbsp;·&nbsp; <a href="privacy.html" style="color:#555;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#e8197c'" onmouseout="this.style.color='#555'">Privacy policy</a>`;
   $('footer-mission-tag').innerHTML = `${icon('heart','lucide-14')} Benefiting the homeless community`;
 
   // ── HAMBURGER ──────────────────────────────────────────────
