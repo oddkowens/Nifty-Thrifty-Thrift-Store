@@ -885,6 +885,12 @@ const SITE = {
     return `<svg class="lucide ${size}" viewBox="0 0 24 24" aria-hidden="true">${p}</svg>`;
   }
 
+  // Encodes every character as an HTML entity so crawlers can't read mailto links.
+  // Browsers decode and render these perfectly — humans see and click normally.
+  function obfuscateEmail(email) {
+    return email.split('').map(c => `&#${c.charCodeAt(0)};`).join('');
+  }
+
   // Renders a <picture> with WebP source + JPG fallback.
   // Pass the same attrs you'd put on the <img> (class, loading, decoding, etc.)
   function picture(jpgSrc, alt, imgAttrs = '') {
@@ -1167,7 +1173,7 @@ const SITE = {
     const storeCards = SITE.locations.map(loc => {
       const rawPhone = loc.phone.replace(/\D/g, '');
       const emailSubject = encodeURIComponent(`Donation Inquiry – ${loc.address}`);
-      const emailHref = dc.email ? `mailto:${esc(dc.email)}?subject=${emailSubject}` : '';
+      const emailHref = dc.email ? `&#109;&#97;&#105;&#108;&#116;&#111;&#58;${obfuscateEmail(dc.email)}&#63;subject&#61;${emailSubject}` : '';
       return `
         <div style="flex:1;min-width:220px;background:#fff;border:1px solid #efefef;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.06);padding:1.25rem;">
           ${loc.tag ? `<div style="display:inline-block;font-size:10px;letter-spacing:2px;text-transform:uppercase;background:#111;color:#fff;padding:4px 11px;border-radius:6px;margin-bottom:0.6rem;font-weight:600;">${esc(loc.tag)}</div>` : ''}
