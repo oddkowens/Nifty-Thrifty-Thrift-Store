@@ -233,6 +233,7 @@
     .day-desc { font-size: 12px; color: #888; line-height: 1.4; }
     .day-dot { width: 6px; height: 6px; border-radius: 50%; background: #e0e0e0; margin: 0.5rem auto 0; }
     .day-card.hot .day-dot { background: #e8197c; }
+    .day-flag { display: inline-block; margin-top: 0.5rem; font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #fff; background: #e8197c; padding: 3px 9px; border-radius: 99px; box-shadow: 0 2px 8px rgba(232,25,124,0.35); }
     .day-card.today { position: relative; border-color: #e8197c; box-shadow: 0 4px 16px rgba(232,25,124,0.2); transform: translateY(-2px); }
     .day-card.today .day-name { color: #fff; }
     .today-pill { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: #e8197c; color: #fff; font-size: 9px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 10px; border-radius: 99px; box-shadow: 0 2px 8px rgba(232,25,124,0.4); white-space: nowrap; }
@@ -659,6 +660,26 @@ const SITE = {
   announcement: "🛍️ <strong>Two Wilmington locations</strong> &nbsp;·&nbsp; New arrivals every day &nbsp;·&nbsp; $1/lb at Market St every Sat &amp; Sun &nbsp;·&nbsp; Double stamps every Thursday",
 
   // ----------------------------------------------------------
+  // LIMITED-TIME PROMO BANNER
+  // Pins a message to the front of the announcement bar rotation
+  // between startDate and endDate (inclusive) and flags the matching
+  // day cards in the weekly lineup. After endDate it disappears on
+  // its own — no need to come back and delete it.
+  // Set show: false to turn it off early.
+  // ----------------------------------------------------------
+  promo: {
+    show: true,
+    startDate: "2026-08-13",
+    endDate: "2026-08-16",
+    icon: "tag",
+    html: `<strong>Back-to-School "Tax Free" Weekend</strong> &nbsp;·&nbsp; Sat 8/15 &amp; Sun 8/16 &nbsp;·&nbsp; 7% off your entire purchase at both locations`,
+    // Which day cards in the weekly lineup get a flag while the promo runs.
+    // 0 = Sun, 1 = Mon … 6 = Sat. Use [] for none.
+    weekDays: [6, 0],
+    dayFlag: "+7% off"
+  },
+
+  // ----------------------------------------------------------
   // RIBBON (set show: false to hide)
   // ----------------------------------------------------------
   ribbon: {
@@ -719,6 +740,13 @@ const SITE = {
   // e.g.: endDate: "2025-12-31"  (auto-hides after that date)
   // ----------------------------------------------------------
   events: [
+    {
+      date: "Sat, Aug 15 & Sun, Aug 16",
+      name: 'Back-to-School "Tax Free" Weekend',
+      location: "Both locations",
+      pills: ["7% off your entire purchase", "Both locations", "Saturday & Sunday only", "No coupon needed"],
+      endDate: "2026-08-16"
+    },
     {
       date: "Every Monday · 10am – 5:30pm",
       name: "Mega Monday Restock",
@@ -916,6 +944,29 @@ const SITE = {
   const todayMessages = announcements.filter(a => a.days.includes(today) || a.days.length === 0);
   const bar = $('announce-bar');
 
+  // Parses "YYYY-MM-DD" as local midnight. Do NOT swap this for new Date(str) —
+  // that reads the string as UTC and shifts every date window by a timezone.
+  function parseLocalDate(s) {
+    const [y, m, d] = String(s).split('-').map(Number);
+    return new Date(y, m - 1, d);
+  }
+
+  // Limited-time promo — resolves to the promo object while it's inside its
+  // date window, otherwise null. Used by the announcement bar and the weekly grid.
+  const activePromo = (function () {
+    const p = SITE.promo;
+    if (!p || !p.show) return null;
+    const now = new Date(); now.setHours(0, 0, 0, 0);
+    if (p.startDate && now < parseLocalDate(p.startDate)) return null;
+    if (p.endDate   && now > parseLocalDate(p.endDate))   return null;
+    return p;
+  })();
+
+  // Pin it to the front of the announcement rotation.
+  if (activePromo?.html) {
+    todayMessages.unshift({ days: [], html: `${icon(activePromo.icon || 'tag', 'lucide-14')} ${activePromo.html}` });
+  }
+
   function paintAnnouncement(html) { bar.innerHTML = `<p>${html}</p>`; }
 
   if (todayMessages.length > 0) {
@@ -1003,15 +1054,18 @@ const SITE = {
 
   // ── WEEKLY SCHEDULE ────────────────────────────────────────
   const dayIndex = { Sun:0, Mon:1, Tue:2, Wed:3, Thu:4, Fri:5, Sat:6 };
+  const promoDays = Array.isArray(activePromo?.weekDays) ? activePromo.weekDays : [];
   $('week-grid').innerHTML = SITE.weeklySchedule.map(d => {
     const isToday = dayIndex[d.day] === today;
-    const cls = ['day-card', d.hot && 'hot', isToday && 'today'].filter(Boolean).join(' ');
+    const isPromo = promoDays.includes(dayIndex[d.day]);
+    const cls = ['day-card', (d.hot || isPromo) && 'hot', isToday && 'today'].filter(Boolean).join(' ');
     return `<div class="${cls}"${isToday ? ' aria-current="date"' : ''}>
       ${isToday ? '<span class="today-pill">Today</span>' : ''}
       <div class="day-name">${esc(d.day)}</div>
       <div class="day-promo">${esc(d.promo)}</div>
       <div class="day-desc">${esc(d.desc)}</div>
       <div class="day-dot"></div>
+      ${isPromo && activePromo.dayFlag ? `<div class="day-flag">${esc(activePromo.dayFlag)}</div>` : ''}
     </div>`;
   }).join('');
 
@@ -1108,8 +1162,8 @@ const SITE = {
   const today_date = new Date(); today_date.setHours(0,0,0,0);
   const activeEvents = SITE.events.filter(e => {
     if (!e.endDate) return true;
-    const end = new Date(e.endDate); end.setHours(0,0,0,0);
-    return end >= today_date;
+    // Local-time parse — new Date("YYYY-MM-DD") reads as UTC and expires a day early.
+    return parseLocalDate(e.endDate) >= today_date;
   });
   $('events-grid').innerHTML = activeEvents.length
     ? activeEvents.map(e => `
